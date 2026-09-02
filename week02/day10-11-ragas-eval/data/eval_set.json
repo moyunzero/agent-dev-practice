@@ -1,0 +1,18 @@
+[
+  {
+    "question": "chunk_overlap 是干什么的？",
+    "ground_truth": "chunk_overlap 是相邻分块之间的重叠字符数，避免切断句子。"
+  },
+  {
+    "question": "ERR_CHUNK_42 怎么处理？",
+    "ground_truth": "停止写入，清空 collection，重新 embed 全量 chunk。"
+  },
+  {
+    "question": "切文档时怎么让前后两段有一点重复，避免句子被切断？",
+    "ground_truth": "调大 chunk_overlap，让相邻块有重叠字符。"
+  },
+  {
+    "question": "chunk_size 建议范围是多少？",
+    "ground_truth": "建议 200～500。"
+  }
+]

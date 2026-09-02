@@ -1,0 +1,18 @@
+[project]
+name = "day01-fastapi-hello"
+version = "0.1.0"
+description = "Week1 Day1 FastAPI hello API with Ollama and OpenRouter"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "openai>=3.3.1",
+    "pydantic-settings>=2.15.0",
+    "python-dotenv>=1.2.3",
+    "uvicorn[standard]>=0.52.4",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+]

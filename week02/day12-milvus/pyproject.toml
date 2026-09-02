@@ -1,0 +1,12 @@
+[project]
+name = "day12-milvus"
+version = "0.1.0"
+description = "Week2 Day12 Milvus Docker + pymilvus"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-huggingface>=0.1.0",
+    "langchain-text-splitters>=0.3.0",
+    "pymilvus>=2.4.0",
+    "sentence-transformers>=3.0.0",
+]

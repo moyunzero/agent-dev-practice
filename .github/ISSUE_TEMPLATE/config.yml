@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: AgentGuide 上游路线
+    url: https://github.com/adongwanai/AgentGuide/blob/main/docs/05-roadmaps/learning-roadmap-development.md
+    about: 本仓库对齐的开发岗 8 周学习计划

@@ -1,0 +1,15 @@
+[project]
+name = "day14-rag-upgrade"
+version = "0.1.0"
+description = "Week2 Day14 upgrade Naive RAG with Hybrid + Rerank + Milvus"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "langchain-huggingface>=0.1.0",
+    "langchain-text-splitters>=0.3.0",
+    "pymilvus>=2.4.0",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=3.0.0",
+    "uvicorn[standard]>=0.30.0",
+]

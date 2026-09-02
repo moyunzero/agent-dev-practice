@@ -1,0 +1,13 @@
+[project]
+name = "day03-rag-load-split"
+version = "0.1.0"
+description = "Week1 Day3 document loading and text chunking strategies"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fpdf2>=2.8.8",
+    "langchain>=1.3.16",
+    "langchain-community>=0.4.2",
+    "langchain-text-splitters>=1.1.2",
+    "pypdf>=6.16.1",
+]

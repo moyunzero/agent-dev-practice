@@ -1,0 +1,4 @@
+LangChain 的 Document Loader 负责把磁盘上的文件读进内存，输出 Document 对象。
+Document 有两部分：page_content 是正文，metadata 是来源信息（例如文件路径、页码）。
+纯文本 .txt 没有标题层级，后面分块通常用 RecursiveCharacterTextSplitter，按段落和句号尽量在自然边界切开。
+如果 chunk_size 太小，一句话可能被拆到两个 chunk 里，检索时容易丢上下文；overlap 就是用来缓解这个问题的。

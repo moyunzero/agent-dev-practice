@@ -1,0 +1,10 @@
+[project]
+name = "day23-redis-cache"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+  "redis>=5.0.0",
+  "langchain>=1.0",
+  "langchain-ollama>=0.3",
+  "langgraph>=0.2",
+]

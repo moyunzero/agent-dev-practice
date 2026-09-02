@@ -1,0 +1,14 @@
+[project]
+name = "day13-unstructured-pdf"
+version = "0.1.0"
+description = "Week2 Day13 Unstructured complex PDF parsing"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-community>=0.3.0,<0.4",
+    "langchain-core>=0.3.0",
+    "langchain-text-splitters>=0.3.0",
+    "pypdf>=5.0.0",
+    "reportlab>=4.0.0",
+    "unstructured[pdf]>=0.16.0",
+]

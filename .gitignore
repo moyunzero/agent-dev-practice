@@ -1,0 +1,36 @@
+.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.DS_Store
+
+# 本地工具包（如 Day28 JMeter 解压目录）
+**/.tools/
+
+# 运行产物
+**/jmeter-out/
+**/jmeter-out-*/
+*.jtl
+jmeter.log
+
+dist/
+*.egg-info/
+
+# 本地专用，不上传
+PROGRESS.md
+LOCAL.md
+.cursor/
+**/LEARN.md
+**/LEARN_REMEDIATION.md
+docs/COACHING.md
+docs/DOC_SYNC.md
+docs/PUBLIC_SYNC.md
+docs/LEARNING_WORKFLOW.md
+docs/MASTERY.md
+docs/NOTE_QUALITY.md
+docs/REMEDIATION_BACKLOG.md
+docs/_TEMPLATE_DAY_COACHING.md
+docs/upstream/

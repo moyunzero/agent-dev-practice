@@ -1,0 +1,7 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      # 本机 6379 常被其它项目占用（如 personal_gpt_redis）；Day23 用 6389
+      - "6389:6379"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
