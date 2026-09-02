@@ -283,7 +283,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | Apple Silicon 专项 | 27 | vLLM-Metal + mlx 模型 |
 | 压测工具 | 28 | Locust 内置；JMeter 可选下载 |
 
-每个 day 目录 README 有**完整验收命令**和期望输出；长文步骤见对应 `notes/` 文章。
+每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
 
 ---
 
