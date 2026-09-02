@@ -1,39 +1,54 @@
 # Week 3 / Day 17 — SQL Agent
 
-> **状态**：`available`
-> 对外文章：[用自然语言查 SQLite：手写 SQL 工具 + LangChain Agent](../../notes/week03/day17-sql-agent.md)
+> **状态**：`available`  
+> **长文教程**（可选）：[用自然语言查 SQLite](../../notes/week03/day17-sql-agent.md)
+
+## 今日目标
+
+自然语言查本地 SQLite：list tables / schema / 只读 query 工具 + LangChain SQL Agent。
 
 ## 前置
 
-- Ollama（默认 `qwen2:7b`）  
-- 无需 Docker / 外网数据库  
+- Ollama（默认 `qwen2:7b`）
+- 无需 Docker / 外网
 
-## 验收命令（全文）
+## 文件说明
+
+| 文件 / 目录 | 作用 |
+|-------------|------|
+| `data/shop.db` | 运行 `step01` 后生成的 SQLite 商店库 |
+| `db_config.py` | 数据库路径、连接 |
+| `step01_init_and_peek.py` | **第 1 步**：建表、灌样例、打印 peek |
+| `sql_tools.py` | **模块**：`sql_db_list_tables` / `schema` / `query`（只读） |
+| `demo_sql_agent.py` | **第 2 步**：`create_agent` + 自然语言问句 |
+| `pyproject.toml` / `uv.lock` | langchain、sqlite |
+
+## 推荐顺序
+
+| 步骤 | 命令 | 你会看到什么 |
+|:----:|------|-------------|
+| 0 | `uv sync` | 依赖 |
+| 1 | `step01_init_and_peek.py` | `products` / `sales` 表与样例行 |
+| 2 | `demo_sql_agent.py` | Agent 轨迹 + 答案 |
+| 3 | 换问句再跑 | 验证 SQL 与 peek 一致 |
+
+## 验收命令（汇总）
 
 ```bash
 cd week03/day17-sql-agent
-
 uv sync
 uv run python step01_init_and_peek.py
-uv run python demo_sql_agent.py
-# 或：
-uv run python demo_sql_agent.py "外设类商品有哪些？最贵的是哪个？"
+uv run python demo_sql_agent.py "哪个商品总销量最高？卖了多少件？"
 ```
 
-**期望**：peek 见 `products` / `sales`；Agent 轨迹含 `sql_db_*`；销量题 Answer 与 peek 中 `SUM(qty)` 最高商品一致。
+## 验收标准
 
-## 脚本
+- 轨迹含 `sql_db_list_tables` / `schema` / `query`
+- 答案数字与 peek 中 `SUM(qty)` 一致
 
-| 脚本 | 用途 |
-|------|------|
-| `step01_init_and_peek.py` | 建 `data/shop.db` 并打印表 |
-| `sql_tools.py` | list / schema / query（只读） |
-| `demo_sql_agent.py` | `create_agent` SQL Agent |
-
-## 收工后清理
+## 收工清理
 
 ```bash
 rm -rf .venv __pycache__
-find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null
-# data/shop.db 可保留（练习数据，可由 step01 重建）
+# data/shop.db 可保留；删后 step01 可重建
 ```

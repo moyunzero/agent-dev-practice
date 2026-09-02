@@ -1,38 +1,57 @@
 # Week 4 / Day 23 — Redis 缓存 LLM 响应
 
-> **状态**：`available`
-> 对外文章：[给 Agent 加 Redis 缓存：别让相同问句重复问模型](../../notes/week04/day23-redis-cache.md)
+> **状态**：`available`  
+> **长文教程**（可选）：[给 Agent 加 Redis 缓存](../../notes/week04/day23-redis-cache.md)
 
-## 怎么学
+## 今日目标
 
-按文章自学，或逐脚本跟练。需要 Docker（Redis）与 Ollama。
+Docker Redis；缓存 Agent **最终 LLM 回答**；同问句 miss → hit 延迟对比。
 
-## 验收命令
+## 前置
+
+- Docker Desktop
+- Ollama（step02/03）
+
+## 文件说明
+
+| 文件 | 作用 |
+|------|------|
+| `docker-compose.yml` | Redis 服务（宿主机端口 **6389**） |
+| `redis_config.py` | 连接 host/port、key 前缀 |
+| `step01_redis_ping.py` | **第 1 步**：连通、set/get、TTL；跑两次看 MISS/HIT |
+| `step02_agent_llm_cache.py` | **第 2 步**：Agent + 回答级缓存；第二次 ~0s |
+| `step03_compare_latency.py` | **第 3 步**：DEL 缓存后对比 miss vs hit 耗时 |
+| `pyproject.toml` / `uv.lock` | redis、langchain |
+
+## 推荐顺序
+
+| 步骤 | 命令 | 你会看到什么 |
+|:----:|------|-------------|
+| 0 | `docker compose up -d` | Redis 6389 |
+| 1 | `uv sync` | 依赖 |
+| 2 | `step01_redis_ping.py` ×2 | 第二次 HIT |
+| 3 | `step02_agent_llm_cache.py` ×2 | 第二次 `[hit]` 跳过 Ollama |
+| 4 | `step03_compare_latency.py` | 数字对比 |
+
+## 验收命令（汇总）
 
 ```bash
 cd week04/day23-redis-cache
-docker compose up -d && docker compose ps   # 映射 6389
+docker compose up -d && docker compose ps
 uv sync
-uv run python step01_redis_ping.py          # 跑两次：MISS → HIT
-uv run python step02_agent_llm_cache.py     # 跑两次：miss 数十秒 → hit ~0s
-uv run python step03_compare_latency.py     # 先 DEL 再对比
+uv run python step01_redis_ping.py
+uv run python step02_agent_llm_cache.py
+uv run python step03_compare_latency.py
 ```
 
-**期望**：同问句第二次为 hit；`pipeline` 语义上跳过 Agent/Ollama。
+## 验收标准
 
-## 脚本说明
+- 同问句第二次为 cache hit
+- 能区分「检索缓存」与「最终回答缓存」（本日做后者）
 
-| 脚本 | 用途 |
-|------|------|
-| `step01_redis_ping.py` | Redis 连通、TTL、MISS/HIT |
-| `step02_agent_llm_cache.py` | Agent + 缓存最终回答 |
-| `step03_compare_latency.py` | 优化前后延迟对比 |
-| `redis_config.py` | 主机端口（默认 6389） |
-
-## 收工后清理
+## 收工清理
 
 ```bash
 docker compose down
 rm -rf .venv __pycache__
-find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null
 ```

@@ -1,35 +1,49 @@
 # Week 3 / Day 18 — Function Calling
 
-> **状态**：`available`
-> 对外文章：[用 OpenAI API 做 Function Calling：让模型「点菜」，本地函数「炒菜」](../../notes/week03/day18-function-calling.md)
+> **状态**：`available`  
+> **长文教程**（可选）：[用 OpenAI API 做 Function Calling](../../notes/week03/day18-function-calling.md)
+
+## 今日目标
+
+理解 OpenAI 兼容 API 的 tools / tool_calls / role=tool 两轮协议；本地函数执行订单查询。
 
 ## 前置
 
-- 默认 Ollama + 支持 tools 的模型（如 `qwen2:7b`）  
+- 默认 Ollama OpenAI 兼容 `/v1`（如 `qwen2:7b`）
 - 或真 OpenAI：`OPENAI_API_KEY` + `OPENAI_MODEL`
 
-## 验收命令（全文）
+## 文件说明
+
+| 文件 | 作用 |
+|------|------|
+| `step01_fc_protocol.py` | **第 1 步**：打印 messages 结构；模拟 tool_calls 往返 |
+| `demo_openai_fc_agent.py` | **第 2 步**：完整两轮 FC：模型点菜 → 本地 `get_order_status` → 模型总结 |
+| `pyproject.toml` / `uv.lock` | openai SDK |
+
+## 推荐顺序
+
+| 步骤 | 命令 | 你会看到什么 |
+|:----:|------|-------------|
+| 0 | `uv sync` | 依赖 |
+| 1 | `step01_fc_protocol.py` | JSON tools 定义与 message 角色 |
+| 2 | `demo_openai_fc_agent.py` | 真实 API 调用 + 订单状态答案 |
+
+## 验收命令（汇总）
 
 ```bash
 cd week03/day18-function-calling
-
 uv sync
 uv run python step01_fc_protocol.py
 uv run python demo_openai_fc_agent.py
 ```
 
-**期望**：出现 `tool_calls` → 本地 `get_order_status` 返回 → Answer 引用状态字段。
+## 验收标准
 
-## 脚本
+- 出现 `get_order_status` 的 tool_call
+- 最终 Answer 引用订单状态字段
 
-| 脚本 | 用途 |
-|------|------|
-| `step01_fc_protocol.py` | tools / tool_calls 协议示意 |
-| `demo_openai_fc_agent.py` | OpenAI SDK 两轮 FC Agent |
-
-## 收工后清理
+## 收工清理
 
 ```bash
 rm -rf .venv __pycache__
-find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null
 ```

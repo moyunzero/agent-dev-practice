@@ -1,46 +1,62 @@
 # Week 2 / Day 13 — 复杂 PDF / Unstructured
 
-> **状态**：`available`
-> 对外文章：[用 Unstructured 解析含表格的复杂 PDF](../../notes/week02/day13-unstructured-pdf.md)
+> **状态**：`available`  
+> **长文教程**（可选）：[用 Unstructured 解析含表格的复杂 PDF](../../notes/week02/day13-unstructured-pdf.md)
 
-## 怎么学
+## 今日目标
 
-按文章自学，或逐脚本跟练。第 1 课先对比 PyPDF 局限，再引入 Unstructured。
+对比 PyPDF 局限；用 Unstructured `partition_pdf` 解析含表格 PDF；fast vs hi_res；Element → Document → Splitter。
 
-## 验收命令（全文）
+## 前置
+
+- Day 3 分块策略
+- Python 3.12+；网络（HF 版面模型）；可选 `export HF_ENDPOINT=https://hf-mirror.com`
+
+## 文件说明
+
+| 文件 / 目录 | 作用 |
+|-------------|------|
+| `scripts/generate_sample_pdfs.py` | **第 0 步**：生成 `data/*.pdf` 样例 |
+| `data/simple_two_page.pdf` | 简单两页 PDF |
+| `data/complex_sample.pdf` | 含表格的复杂 PDF |
+| `data/with_image_sample.pdf` | 含图片占位（扩展） |
+| `step01_pypdf_limitation.py` | **第 1 步**：PyPDF 在复杂 PDF 上的局限 |
+| `demo_partition_pdf.py` | **第 2 步**：`partition_pdf` → Element 类型列表 |
+| `demo_elements_inspect.py` | **第 3 步**：fast vs hi_res；Table 元素 |
+| `demo_load_and_split.py` | **第 4 步**：Table 用 `text_as_html` → 行列文本 → 分块 |
+| `step_remediation_images.py` | 可选：图片/OCR 边界（非主路径） |
+| `pyproject.toml` / `uv.lock` | unstructured、pypdf |
+
+## 推荐顺序
+
+| 步骤 | 命令 | 说明 |
+|:----:|------|------|
+| 0 | `uv sync` | 依赖较大 |
+| 1 | `scripts/generate_sample_pdfs.py` | 生成 PDF |
+| 2 | `step01_pypdf_limitation.py` | 感受 PyPDF 丢结构 |
+| 3 | `demo_partition_pdf.py` | Unstructured 元素类型 |
+| 4 | `demo_elements_inspect.py` | hi_res 首次较慢（下模型） |
+| 5 | `demo_load_and_split.py` | 接入 RAG 分块流水线 |
+
+## 验收命令（汇总）
 
 ```bash
 cd week02/day13-unstructured-pdf
 
 uv sync
 uv run python scripts/generate_sample_pdfs.py
-
-# 1. PyPDF 局限
 uv run python step01_pypdf_limitation.py
-
-# 2. partition_pdf（fast）
 uv run python demo_partition_pdf.py
-
-# 3. fast vs hi_res（首次 hi_res 会下版面模型，较慢）
 uv run python demo_elements_inspect.py
-
-# 4. Element → Document → split（Table 优先 text_as_html）
 uv run python demo_load_and_split.py
 ```
 
-**需要**：Python 3.12+、网络（HF 模型）；可选 `export HF_ENDPOINT=https://hf-mirror.com`。
+## 验收标准
 
-## 脚本说明
+- `hi_res` + `infer_table_structure=True` 出现 `Table` 类型
+- `demo_load_and_split` 优先用表格 HTML 转行列文本再切分
 
-| 脚本 | 用途 |
-|------|------|
-| `scripts/generate_sample_pdfs.py` | 生成含表格的 `complex_sample.pdf` |
-| `step01_pypdf_limitation.py` | PyPDF 对照简单/复杂 PDF |
-| `demo_partition_pdf.py` | `partition_pdf` Element 类型 |
-| `demo_elements_inspect.py` | fast vs hi_res + Table |
-| `demo_load_and_split.py` | 接入 Day3 Splitter；`text_as_html` → 行列文本 |
-
-## 收工后清理
+## 收工清理
 
 ```bash
 rm -rf .venv __pycache__

@@ -50,7 +50,7 @@
 - **每天独立**：各 day 自带 `pyproject.toml` + `uv.lock`；clone 单目录即可开始
 - **28 篇长文**：[`notes/`](notes/) 里每篇零基础自洽（名词表 + 完整代码 + 坑 + 边界），可单独转发
 - **本地优先**：默认 Ollama；OpenRouter 可选；Embedding 用 sentence-transformers 本地跑
-- **有验收标准**：每个 day README 有 curl / 脚本期望输出，跑通即过关
+- **有验收标准**：每个 day README 含**文件说明**、**推荐执行顺序**，可不看长文独立跟练
 - **路线不缩水**：强制目标对齐 AgentGuide 原文，详见 [`docs/ROADMAP.md`](docs/ROADMAP.md)
 
 ---
