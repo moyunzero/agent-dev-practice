@@ -1,0 +1,10 @@
+[project]
+name = "day30-prometheus"
+version = "0.1.0"
+description = "Day30: expose FastAPI QPS / latency / error metrics via Prometheus"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "prometheus-fastapi-instrumentator>=7.0.0",
+]

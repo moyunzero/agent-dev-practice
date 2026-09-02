@@ -1,0 +1,33 @@
+# Day31 Lesson 2–3 — Grafana + Prometheus（刮取 Day30 :8030/metrics）
+#
+# 前置：宿主机先起 Day30 API
+#   cd ../day30-prometheus && uv sync && uv run uvicorn main_api:app --port 8030
+#
+# 本目录：
+#   docker compose up -d
+#   Grafana  http://127.0.0.1:13031  (admin / admin)
+#   Prometheus http://127.0.0.1:19090
+# 说明：宿主机 9090/9091/3000/3100 常被其它项目占用，本课用 19090/13031
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    ports:
+      - "19090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    ports:
+      - "13031:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus

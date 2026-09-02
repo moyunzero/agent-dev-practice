@@ -338,19 +338,78 @@
 
 ---
 
-## 4. 第 5–8 周（planned）
+## 4. 第 5 周（进行中）
 
-Week 1–4 已发布；以下与 AgentGuide 原文周主题对齐，更新中。
+### Day 29 — 链路追踪 (LangSmith) ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 将 LangSmith 集成到现有 Agent 应用中，分析调用链路 |
+| 本仓串联 | **路径 A-LangSmith**：环境变量接到 Day21 研究助手；Trace 树读模型/工具延迟与错误 |
+| 验收 | Projects 出现完整 Run；能指着树讲清慢在哪；掌握检查；对外文章 |
+| 文章 | [notes/week05/day29-tracing.md](../notes/week05/day29-tracing.md) |
+| 代码 | [week05/day29-tracing](../week05/day29-tracing/) |
+
+### Day 30 — 指标监控 (Prometheus) ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 暴露 API 的 QPS, 延迟, 错误率等核心指标 |
+| 本仓串联 | FastAPI + Instrumentator `/metrics`；自定义 `cache_lookups_total` hit/miss |
+| 验收 | curl 见 requests / duration / cache Counter；掌握检查；对外文章 |
+| 文章 | [notes/week05/day30-prometheus.md](../notes/week05/day30-prometheus.md) |
+| 代码 | [week05/day30-prometheus](../week05/day30-prometheus/) |
+
+### Day 31 — 可视化 (Grafana) ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 安装 Grafana，并创建一个简单的监控大盘来展示 Prometheus 指标 |
+| 本仓串联 | Compose Grafana+Prometheus；刮取 Day30；预置 4 Panel 大盘（含实拍） |
+| 验收 | targets UP；Explore 有曲线；大盘可读；掌握检查；对外文章 |
+| 文章 | [notes/week05/day31-grafana.md](../notes/week05/day31-grafana.md) |
+| 代码 | [week05/day31-grafana](../week05/day31-grafana/) |
+
+### Day 32 — 容器化 (Docker) ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 为 FastAPI 应用编写 Dockerfile 并成功构建镜像 |
+| 本仓串联 | Dockerfile + `day32-fastapi` 镜像；`-p 8032:8000`；含 `/metrics` |
+| 验收 | build 成功；curl health/ask/metrics；掌握检查；对外文章 |
+| 文章 | [notes/week05/day32-docker.md](../notes/week05/day32-docker.md) |
+| 代码 | [week05/day32-docker](../week05/day32-docker/) |
+
+### Day 33 — 服务编排 (Docker Compose) ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 编写 `docker-compose.yml` 文件，一键启动整个应用栈 |
+| 本仓串联 | FastAPI + Redis；服务名 DNS；health + miss→hit 验收（Milvus 可选） |
+| 验收 | `compose up`；`/health` redis:true；掌握检查；对外文章 |
+| 文章 | [notes/week05/day33-compose.md](../notes/week05/day33-compose.md) |
+| 代码 | [week05/day33-compose](../week05/day33-compose/) |
+
+---
+
+## 5. 第 6–8 周（planned）
+
+Week 1–4 已发布；Week 5 Day29–33 已 available；其余与 AgentGuide 原文周主题对齐，更新中。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
-| 5 | `in_progress` | LangSmith/替代 Trace、Prometheus、Grafana、Compose、日志 | LangSmith 可用 Langfuse 等开源替代 · 见 [week05/README.md](../week05/README.md) |
+| 5 | `in_progress` | 可观测 + Docker/Compose（Day29–33 ✅）、日志 | 见 [week05/README.md](../week05/README.md) |
 | 6 | `planned` | AutoGen + CrewAI（或现役维护中的等价框架） | 以官方 quickstart 能跑为准 |
 | 7–8 | `planned` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | 部署以 Compose 为底线 |
 
 ---
 
-## 5. 如何使用
+## 6. 如何使用
 
 1. 从根 [README.md](../README.md) 选 Day，进入对应 `weekXX/dayYY-*/` 目录  
 2. 阅读目录内 README 与 [notes/](../notes/) 文章  

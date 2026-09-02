@@ -1,0 +1,14 @@
+# Day31 — Prometheus scrapes Day30 FastAPI /metrics on the host.
+# macOS/Windows Docker Desktop: host.docker.internal → 宿主机
+# Linux: 可改为 extra_hosts 或 network_mode，见 README
+
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: day30-fastapi
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["host.docker.internal:8030"]
+        labels:
+          service: day30-prometheus

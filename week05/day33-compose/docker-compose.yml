@@ -1,0 +1,27 @@
+# Day33 — 一键起 FastAPI + Redis（上游：整个应用栈）
+#
+#   docker compose up -d --build
+#   curl -s http://127.0.0.1:8033/health
+#
+# 端口 8033 避开 Day32 的 8032 / Day30 的 8030
+
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6389:6379"   # 宿主机可选调试；与 Day23 教学端口习惯一致
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build: .
+    ports:
+      - "8033:8000"
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      redis:
+        condition: service_healthy

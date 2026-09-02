@@ -16,8 +16,12 @@
 
 | Day | 主题 | 状态 | 目录 |
 |:---:|------|:----:|------|
-| 29 | 链路追踪 (LangSmith / Langfuse) | `in_progress` | `day29-tracing/`（代码更新中） |
-| 30+ | 监控 / Compose / 日志 | `planned` | 待发布 |
+| 29 | 链路追踪 (LangSmith) | `available` | [day29-tracing](day29-tracing/) · [教程](../notes/week05/day29-tracing.md) |
+| 30 | 指标监控 (Prometheus) | `available` | [day30-prometheus](day30-prometheus/) · [教程](../notes/week05/day30-prometheus.md) |
+| 31 | 可视化 (Grafana) | `available` | [day31-grafana](day31-grafana/) · [教程](../notes/week05/day31-grafana.md) |
+| 32 | 容器化 (Docker) | `available` | [day32-docker](day32-docker/) · [教程](../notes/week05/day32-docker.md) |
+| 33 | 服务编排 (Compose) | `available` | [day33-compose](day33-compose/) · [教程](../notes/week05/day33-compose.md) |
+| 34+ | 日志 / 周总结 | `planned` | 待发布 |
 
 ## 如何使用本目录
 

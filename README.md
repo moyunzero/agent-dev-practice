@@ -1,6 +1,6 @@
 # Agent Dev Practice
 
-**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · 28 天可独立运行的 Agent/RAG 代码 + 零基础自洽长文教程**
+**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · 33 天可独立运行的 Agent/RAG 代码 + 零基础自洽长文教程**
 
 > [AgentGuide](https://github.com/adongwanai/AgentGuide) 告诉你**学什么**；本仓库给你**能跑的代码**和**能直接跟的教程**。  
 > 每个 day 一个目录，`uv sync` 即可跑，不必一次啃完全仓。
@@ -24,7 +24,7 @@
 - [推荐体验路径](#推荐体验路径)
 - [架构一览](#架构一览)
 - [8 周 Roadmap](#8-周-roadmap)
-- [Day 1–28 完整索引](#day-128-完整索引)
+- [Day 1–33 完整索引](#day-133-完整索引)
 - [各 Day 依赖与耗时](#各-day-依赖与耗时)
 - [仓库结构](#仓库结构)
 - [常见问题](#常见问题)
@@ -38,7 +38,7 @@
 |---|--------|-----------|
 | 形态 | 路线、面试、知识地图 | **每日可运行代码 + 长文教程** |
 | 用法 | 规划学什么 | `cd weekXX/dayYY-*` → 跟文章 → 跑验收 |
-| 覆盖 | 8 周全栈 Agent 工程 | Week 1–4 已发布（Day 1–28），Week 5+ 持续更新 |
+| 覆盖 | 8 周全栈 Agent 工程 | Week 1–4 已发布（Day 1–28）；Week 5 更新中（Day 29–33 available） |
 
 如果你正在跟 AgentGuide **开发岗 8 周计划**，可以直接把本仓当作**动手练习场**。
 
@@ -46,9 +46,9 @@
 
 ## 亮点
 
-- **按工程顺序**：FastAPI → LangChain LCEL → Naive RAG → Hybrid/Milvus/RAGAs → ReAct Agent → Redis/异步/压测
+- **按工程顺序**：FastAPI → LangChain LCEL → Naive RAG → Hybrid/Milvus/RAGAs → ReAct Agent → Redis/异步/压测 → LangSmith → Prometheus → Grafana → Docker → Compose
 - **每天独立**：各 day 自带 `pyproject.toml` + `uv.lock`；clone 单目录即可开始
-- **28 篇长文**：[`notes/`](notes/) 里每篇零基础自洽（名词表 + 完整代码 + 坑 + 边界），可单独转发
+- **33 篇长文**：[`notes/`](notes/) 里每篇零基础自洽（名词表 + 完整代码 + 坑 + 边界），可单独转发
 - **本地优先**：默认 Ollama；OpenRouter 可选；Embedding 用 sentence-transformers 本地跑
 - **有验收标准**：每个 day README 含**文件说明**、**推荐执行顺序**，可不看长文独立跟练
 - **路线不缩水**：强制目标对齐 AgentGuide 原文，详见 [`docs/ROADMAP.md`](docs/ROADMAP.md)
@@ -99,6 +99,11 @@ curl -s http://127.0.0.1:11434/api/tags | head
 | Day 23（Redis） | Docker + `docker compose up -d`（本仓 Redis 端口 6389） |
 | Day 27（vLLM） | Apple Silicon：`vLLM-Metal` 独立 venv（见 day README） |
 | Day 28（压测） | Locust（`uv sync` 即可）；JMeter 可选 |
+| Day 29（LangSmith） | [LangSmith](https://smith.langchain.com/) API Key；复用 Day21 + Ollama |
+| Day 30（Prometheus） | FastAPI Instrumentator；curl `/metrics` 即可（Grafana 见 Day31） |
+| Day 31（Grafana） | Docker Compose；端口 19090/13031；需 Day30 `:8030` |
+| Day 32（Dockerfile） | Docker build；宿主机 `8032` → 容器 `8000` |
+| Day 33（Compose） | Docker Compose；FastAPI + Redis；端口 `8033` / `6389` |
 
 OpenRouter（可选）：在需要的 day 里 `cp .env.example .env` 填 `OPENROUTER_API_KEY`。
 
@@ -240,7 +245,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ---
 
-## Day 1–28 完整索引
+## Day 1–33 完整索引
 
 | Day | 主题 | 代码目录 | 教程 |
 |:---:|------|----------|------|
@@ -269,6 +274,11 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 26 | 批处理优化 | [day26-batching](week04/day26-batching/) | [📖](notes/week04/day26-batching.md) |
 | 27 | vLLM-Metal 推理 | [day27-vllm](week04/day27-vllm/) | [📖](notes/week04/day27-vllm.md) |
 | 28 | Locust + JMeter 压测 | [day28-load-test](week04/day28-load-test/) | [📖](notes/week04/day28-load-test.md) |
+| 29 | LangSmith 链路追踪 | [day29-tracing](week05/day29-tracing/) | [📖](notes/week05/day29-tracing.md) |
+| 30 | Prometheus 指标 | [day30-prometheus](week05/day30-prometheus/) | [📖](notes/week05/day30-prometheus.md) |
+| 31 | Grafana 大盘 | [day31-grafana](week05/day31-grafana/) | [📖](notes/week05/day31-grafana.md) |
+| 32 | FastAPI Dockerfile | [day32-docker](week05/day32-docker/) | [📖](notes/week05/day32-docker.md) |
+| 33 | Compose FastAPI+Redis | [day33-compose](week05/day33-compose/) | [📖](notes/week05/day33-compose.md) |
 
 ---
 
@@ -278,10 +288,15 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 |------|----------|------|
 | 仅 Ollama | 1–11, 15–20, 22, 26 | 最轻；确保 `ollama serve` + 已 pull 模型 |
 | 首次 sync 较慢 | 4, 5–6, 8–11, 14 | sentence-transformers / torch；磁盘预留 **~2GB** |
-| 需要 Docker | 12, 14, 23 | Milvus standalone / Redis；见各 day `docker compose` |
+| 需要 Docker | 12, 14, 23, 31–33 | Milvus / Redis / Grafana / 自建镜像 / Compose 栈 |
 | 需要网络 | 16, 21 | Open-Meteo / DuckDuckGo；无网有兜底 env |
 | Apple Silicon 专项 | 27 | vLLM-Metal + mlx 模型 |
 | 压测工具 | 28 | Locust 内置；JMeter 可选下载 |
+| LangSmith 账号 | 29 | API Key + 环境变量；复用 Day21 Agent |
+| Prometheus 文本指标 | 30 | Instrumentator + `/metrics`；无需本机 Prometheus Server |
+| Grafana 大盘 | 31 | Compose 端口 19090/13031；依赖 Day30 `:8030` |
+| 自建 Dockerfile | 32 | `docker build -t day32-fastapi`；`-p 8032:8000` |
+| Compose 多服务 | 33 | `docker compose up`；API `:8033` + Redis |
 
 每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
 
@@ -292,8 +307,8 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 ```text
 agent-dev-practice/
 ├── week01/ … week04/       # Day 1–28 练习（available）
-├── week05/                 # Week 5 进行中，见 week05/README.md
-├── notes/                  # 28 篇对外教程 + concepts/
+├── week05/                 # Week 5：Day29–33 available，其余更新中 → week05/README.md
+├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
 ├── docs/
 │   └── ROADMAP.md          # 8 周路线落地说明（公开）
 ├── CONTRIBUTING.md
@@ -301,7 +316,7 @@ agent-dev-practice/
 └── README.md
 ```
 
-**Tech Stack：** FastAPI · LangChain · LangGraph · Chroma / Milvus · Ollama · Redis · vLLM-Metal · Locust / JMeter · RAGAs · Unstructured
+**Tech Stack：** FastAPI · LangChain · LangGraph · Chroma / Milvus · Ollama · Redis · vLLM-Metal · Locust / JMeter · LangSmith · Prometheus · Grafana · RAGAs · Unstructured
 
 ---
 
@@ -334,7 +349,7 @@ Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目�
 <details>
 <summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
 
-Week 5（可观测 / LangSmith）进行中，见 [week05/README.md](week05/README.md)。更新会在 README Roadmap 表和 Release 说明。
+Week 5（可观测 / 部署）进行中：Day 29–33 已 available，见 [week05/README.md](week05/README.md)。更新会在 README Roadmap 表和 Release 说明。
 </details>
 
 ---
