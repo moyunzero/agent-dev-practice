@@ -24,7 +24,7 @@
 - [推荐体验路径](#推荐体验路径)
 - [架构一览](#架构一览)
 - [8 周 Roadmap](#8-周-roadmap)
-- [Day 1–33 完整索引](#day-133-完整索引)
+- [Day 1–34 完整索引](#day-134-完整索引)
 - [各 Day 依赖与耗时](#各-day-依赖与耗时)
 - [仓库结构](#仓库结构)
 - [常见问题](#常见问题)
@@ -38,7 +38,7 @@
 |---|--------|-----------|
 | 形态 | 路线、面试、知识地图 | **每日可运行代码 + 长文教程** |
 | 用法 | 规划学什么 | `cd weekXX/dayYY-*` → 跟文章 → 跑验收 |
-| 覆盖 | 8 周全栈 Agent 工程 | Week 1–4 已发布（Day 1–28）；Week 5 更新中（Day 29–33 available） |
+| 覆盖 | 8 周全栈 Agent 工程 | Week 1–4 已发布（Day 1–28）；Week 5 更新中（Day 29–34 available） |
 
 如果你正在跟 AgentGuide **开发岗 8 周计划**，可以直接把本仓当作**动手练习场**。
 
@@ -104,6 +104,7 @@ curl -s http://127.0.0.1:11434/api/tags | head
 | Day 31（Grafana） | Docker Compose；端口 19090/13031；需 Day30 `:8030` |
 | Day 32（Dockerfile） | Docker build；宿主机 `8032` → 容器 `8000` |
 | Day 33（Compose） | Docker Compose；FastAPI + Redis；端口 `8033` / `6389` |
+| Day 34（JSON 日志） | structlog；uvicorn stdout 看 JSON；端口 `8034` |
 
 OpenRouter（可选）：在需要的 day 里 `cp .env.example .env` 填 `OPENROUTER_API_KEY`。
 
@@ -237,7 +238,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 2 | Advanced RAG + 向量库 + 评估 | `available` | Hybrid + Rerank + Milvus + RAGAs |
 | 3 | Agent + Tool Calling | `available` | 带工具的研究助手（含重试/降级） |
 | 4 | 性能优化 | `available` | Redis 缓存、异步、批处理、压测 |
-| 5 | 可观测与部署 | `in_progress` | Trace + 监控 + Compose → [week05/README.md](week05/README.md) |
+| 5 | 可观测与部署 | `in_progress` | Trace + 监控 + Compose + JSON 日志 → [week05/README.md](week05/README.md) |
 | 6 | Multi-Agent | `planned` | AutoGen / CrewAI 协作 Demo |
 | 7–8 | 工业项目 | `planned` | 智能客服 RAG + 投研 Multi-Agent |
 
@@ -245,7 +246,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ---
 
-## Day 1–33 完整索引
+## Day 1–34 完整索引
 
 | Day | 主题 | 代码目录 | 教程 |
 |:---:|------|----------|------|
@@ -279,6 +280,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 31 | Grafana 大盘 | [day31-grafana](week05/day31-grafana/) | [📖](notes/week05/day31-grafana.md) |
 | 32 | FastAPI Dockerfile | [day32-docker](week05/day32-docker/) | [📖](notes/week05/day32-docker.md) |
 | 33 | Compose FastAPI+Redis | [day33-compose](week05/day33-compose/) | [📖](notes/week05/day33-compose.md) |
+| 34 | JSON 结构化日志 | [day34-logging](week05/day34-logging/) | [📖](notes/week05/day34-logging.md) |
 
 ---
 
@@ -297,6 +299,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | Grafana 大盘 | 31 | Compose 端口 19090/13031；依赖 Day30 `:8030` |
 | 自建 Dockerfile | 32 | `docker build -t day32-fastapi`；`-p 8032:8000` |
 | Compose 多服务 | 33 | `docker compose up`；API `:8033` + Redis |
+| JSON 结构化日志 | 34 | structlog + FastAPI 中间件；端口 `8034`；stdout / `jq` |
 
 每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
 
@@ -307,7 +310,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 ```text
 agent-dev-practice/
 ├── week01/ … week04/       # Day 1–28 练习（available）
-├── week05/                 # Week 5：Day29–33 available，其余更新中 → week05/README.md
+├── week05/                 # Week 5：Day29–34 available，其余更新中 → week05/README.md
 ├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
 ├── docs/
 │   └── ROADMAP.md          # 8 周路线落地说明（公开）
@@ -349,7 +352,7 @@ Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目�
 <details>
 <summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
 
-Week 5（可观测 / 部署）进行中：Day 29–33 已 available，见 [week05/README.md](week05/README.md)。更新会在 README Roadmap 表和 Release 说明。
+Week 5（可观测 / 部署）进行中：Day 29–34 已 available，见 [week05/README.md](week05/README.md)。更新会在 README Roadmap 表和 Release 说明。
 </details>
 
 ---

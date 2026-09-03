@@ -395,15 +395,26 @@
 | 文章 | [notes/week05/day33-compose.md](../notes/week05/day33-compose.md) |
 | 代码 | [week05/day33-compose](../week05/day33-compose/) |
 
+### Day 34 — 日志系统 (JSON) ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 配置应用将日志输出为 JSON 格式，为接入 ELK 做准备 |
+| 本仓串联 | FastAPI + structlog `JSONRenderer`；请求中间件；端口 `8034`（不强制本机 ELK） |
+| 验收 | stdout 一行 JSON；含 `event`/`path`/`status`/`duration_ms`；掌握检查；对外文章 |
+| 文章 | [notes/week05/day34-logging.md](../notes/week05/day34-logging.md) |
+| 代码 | [week05/day34-logging](../week05/day34-logging/) |
+
 ---
 
 ## 5. 第 6–8 周（planned）
 
-Week 1–4 已发布；Week 5 Day29–33 已 available；其余与 AgentGuide 原文周主题对齐，更新中。
+Week 1–4 已发布；Week 5 Day29–34 已 available；其余与 AgentGuide 原文周主题对齐，更新中。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
-| 5 | `in_progress` | 可观测 + Docker/Compose（Day29–33 ✅）、日志 | 见 [week05/README.md](../week05/README.md) |
+| 5 | `in_progress` | 可观测 + Docker/Compose + JSON 日志（Day29–34 ✅） | 见 [week05/README.md](../week05/README.md) |
 | 6 | `planned` | AutoGen + CrewAI（或现役维护中的等价框架） | 以官方 quickstart 能跑为准 |
 | 7–8 | `planned` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | 部署以 Compose 为底线 |
 

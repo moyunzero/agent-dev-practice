@@ -21,7 +21,8 @@
 | 31 | 可视化 (Grafana) | `available` | [day31-grafana](day31-grafana/) · [教程](../notes/week05/day31-grafana.md) |
 | 32 | 容器化 (Docker) | `available` | [day32-docker](day32-docker/) · [教程](../notes/week05/day32-docker.md) |
 | 33 | 服务编排 (Compose) | `available` | [day33-compose](day33-compose/) · [教程](../notes/week05/day33-compose.md) |
-| 34+ | 日志 / 周总结 | `planned` | 待发布 |
+| 34 | 日志系统 (JSON) | `available` | [day34-logging](day34-logging/) · [教程](../notes/week05/day34-logging.md) |
+| 35 | 周度总结 | `planned` | 待发布 |
 
 ## 如何使用本目录
 
