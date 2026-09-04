@@ -1,6 +1,6 @@
 # Week 5 — 可观测与部署
 
-> **状态**：`in_progress`  
+> **状态**：`available`  
 > 对齐 [AgentGuide 开发岗路线 · Week 5](https://github.com/adongwanai/AgentGuide/blob/main/docs/05-roadmaps/learning-roadmap-development.md)
 
 ## 本周目标（摘要）
@@ -22,10 +22,10 @@
 | 32 | 容器化 (Docker) | `available` | [day32-docker](day32-docker/) · [教程](../notes/week05/day32-docker.md) |
 | 33 | 服务编排 (Compose) | `available` | [day33-compose](day33-compose/) · [教程](../notes/week05/day33-compose.md) |
 | 34 | 日志系统 (JSON) | `available` | [day34-logging](day34-logging/) · [教程](../notes/week05/day34-logging.md) |
-| 35 | 周度总结 | `planned` | 待发布 |
+| 35 | 周度总结与生产模拟 | `available` | [day35-incident](day35-incident/) · [教程](../notes/week05/day35-incident.md) |
 
 ## 如何使用本目录
 
-Week 5 内容**持续追加**。某个 day 目录出现 `README.md` 且状态为 `available` 时，即可按该目录验收命令跟练。
+某个 day 目录出现 `README.md` 且状态为 `available` 时，即可按该目录验收命令跟练。
 
 完整 8 周索引见根 [README.md](../README.md) 与 [docs/ROADMAP.md](../docs/ROADMAP.md)。

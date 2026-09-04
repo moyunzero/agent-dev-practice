@@ -338,7 +338,7 @@
 
 ---
 
-## 4. 第 5 周（进行中）
+## 4. 第 5 周 ✅
 
 ### Day 29 — 链路追踪 (LangSmith) ✅
 
@@ -406,15 +406,26 @@
 | 文章 | [notes/week05/day34-logging.md](../notes/week05/day34-logging.md) |
 | 代码 | [week05/day34-logging](../week05/day34-logging/) |
 
+### Day 35 — 周度总结与生产环境模拟 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 模拟一次线上故障，并使用本周学习的工具链进行问题定位 |
+| 本仓串联 | `FAULT=slow|error` 注入；JSON 字段交叉定位；加码 A：ES+Kibana（19200/15601） |
+| 验收 | slow/error 可复现；Kibana `status:500`/`fault:slow`；掌握检查；对外文章 |
+| 文章 | [notes/week05/day35-incident.md](../notes/week05/day35-incident.md) |
+| 代码 | [week05/day35-incident](../week05/day35-incident/) |
+
 ---
 
 ## 5. 第 6–8 周（planned）
 
-Week 1–4 已发布；Week 5 Day29–34 已 available；其余与 AgentGuide 原文周主题对齐，更新中。
+Week 1–5 已发布（Day1–35 available）；其余与 AgentGuide 原文周主题对齐，更新中。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
-| 5 | `in_progress` | 可观测 + Docker/Compose + JSON 日志（Day29–34 ✅） | 见 [week05/README.md](../week05/README.md) |
+| 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
 | 6 | `planned` | AutoGen + CrewAI（或现役维护中的等价框架） | 以官方 quickstart 能跑为准 |
 | 7–8 | `planned` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | 部署以 Compose 为底线 |
 

@@ -1,0 +1,10 @@
+[project]
+name = "day35-incident"
+version = "0.1.0"
+description = "Day35: incident simulation + Week5 toolchain triage (ES+Kibana add-on A)"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "structlog>=24.0.0",
+]

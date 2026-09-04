@@ -1,0 +1,35 @@
+# Day35 加码 A — Elasticsearch + Kibana（宿主机端口避让）
+#
+#   docker compose up -d
+#   ES     http://127.0.0.1:19200
+#   Kibana http://127.0.0.1:15601
+#
+# 说明：9200/5601 易被占用；本课用 19200/15601。
+# 教学环境关闭 xpack.security，勿用于真实生产。
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "19200:9200"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s http://127.0.0.1:9200 >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.15.3
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - XPACK_SECURITY_ENABLED=false
+    ports:
+      - "15601:5601"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
