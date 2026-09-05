@@ -417,16 +417,27 @@
 | 文章 | [notes/week05/day35-incident.md](../notes/week05/day35-incident.md) |
 | 代码 | [week05/day35-incident](../week05/day35-incident/) |
 
+### Day 36–37 — AutoGen 核心概念 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 学习 `ConversableAgent`、`GroupChat` 等核心概念，并运行官方示例 |
+| 本仓串联 | 现役 AgentChat 0.7.x：`AssistantAgent` + `RoundRobinGroupChat`；`autogen-agentchat` + `autogen-ext[ollama]`；Ollama |
+| 验收 | 单助手 `run`；双助手轮转见 `writer`/`critic`；掌握检查；对外文章 |
+| 文章 | [notes/week06/day36-37-autogen-core.md](../notes/week06/day36-37-autogen-core.md) |
+| 代码 | [week06/day36-37-autogen-core](../week06/day36-37-autogen-core/) |
+
 ---
 
-## 5. 第 6–8 周（planned）
+## 5. 第 6–8 周
 
-Week 1–5 已发布（Day1–35 available）；其余与 AgentGuide 原文周主题对齐，更新中。
+Week 1–5 已发布（Day1–35 available）；Week 6 进行中（Day36–37 available）。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
 | 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
-| 6 | `planned` | AutoGen + CrewAI（或现役维护中的等价框架） | 以官方 quickstart 能跑为准 |
+| 6 | `in_progress` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–37：AgentChat v0.4+；见 [week06/README.md](../week06/README.md) |
 | 7–8 | `planned` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | 部署以 Compose 为底线 |
 
 ---
