@@ -1,0 +1,9 @@
+[project]
+name = "day38-autogen-team"
+version = "0.1.0"
+description = "Day38: AutoGen AgentChat researcher-coder-tester Multi-Agent team"
+requires-python = ">=3.10"
+dependencies = [
+  "autogen-agentchat==0.7.5",
+  "autogen-ext[ollama]==0.7.5",
+]
