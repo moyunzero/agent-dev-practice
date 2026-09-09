@@ -439,16 +439,27 @@
 | 文章 | [notes/week06/day38-autogen-team.md](../notes/week06/day38-autogen-team.md) |
 | 代码 | [week06/day38-autogen-team](../week06/day38-autogen-team/) |
 
+### Day 39–40 — CrewAI 核心概念 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 学习 Agent, Task, Crew, Process 的概念，并运行官方示例 |
+| 本仓串联 | `crewai[litellm]==1.15.20`；`LLM(ollama/...)` + sequential 双 Agent Crew |
+| 验收 | `kickoff` 先研究后写；掌握检查；对外文章 |
+| 文章 | [notes/week06/day39-40-crewai-core.md](../notes/week06/day39-40-crewai-core.md) |
+| 代码 | [week06/day39-40-crewai-core](../week06/day39-40-crewai-core/) |
+
 ---
 
 ## 5. 第 6–8 周
 
-Week 1–5 已发布（Day1–35 available）；Week 6 进行中（Day36–38 available）。
+Week 1–5 已发布（Day1–35 available）；Week 6 进行中（Day36–40 available）。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
 | 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
-| 6 | `in_progress` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–38：AgentChat；见 [week06/README.md](../week06/README.md) |
+| 6 | `in_progress` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–40：AgentChat + CrewAI 核心；见 [week06/README.md](../week06/README.md) |
 | 7–8 | `planned` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | 部署以 Compose 为底线 |
 
 ---

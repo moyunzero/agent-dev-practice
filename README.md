@@ -1,6 +1,6 @@
 # Agent Dev Practice
 
-**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · Day 1–38 可独立运行的 Agent/RAG/Multi-Agent 代码 + 零基础自洽长文教程**
+**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · Day 1–40 可独立运行的 Agent/RAG/Multi-Agent 代码 + 零基础自洽长文教程**
 
 > [AgentGuide](https://github.com/adongwanai/AgentGuide) 告诉你**学什么**；本仓库给你**能跑的代码**和**能直接跟的教程**。  
 > 每个 day 一个目录，`uv sync` 即可跑，不必一次啃完全仓。
@@ -24,7 +24,7 @@
 - [推荐体验路径](#推荐体验路径)
 - [架构一览](#架构一览)
 - [8 周 Roadmap](#8-周-roadmap)
-- [Day 1–38 完整索引](#day-138-完整索引)
+- [Day 1–40 完整索引](#day-140-完整索引)
 - [各 Day 依赖与耗时](#各-day-依赖与耗时)
 - [仓库结构](#仓库结构)
 - [常见问题](#常见问题)
@@ -38,7 +38,7 @@
 |---|--------|-----------|
 | 形态 | 路线、面试、知识地图 | **每日可运行代码 + 长文教程** |
 | 用法 | 规划学什么 | `cd weekXX/dayYY-*` → 跟文章 → 跑验收 |
-| 覆盖 | 8 周全栈 Agent 工程 | Week 1–5 available（Day 1–35）；Week 6 in_progress（Day 36–38 available） |
+| 覆盖 | 8 周全栈 Agent 工程 | Week 1–5 available（Day 1–35）；Week 6 in_progress（Day 36–40 available） |
 
 如果你正在跟 AgentGuide **开发岗 8 周计划**，可以直接把本仓当作**动手练习场**。
 
@@ -108,6 +108,7 @@ curl -s http://127.0.0.1:11434/api/tags | head
 | Day 35（故障演练） | 故障注入 + ES/Kibana；端口 `8035` / `19200` / `15601` |
 | Day 36–37（AutoGen） | AgentChat 0.7.x + Ollama；单助手 / RoundRobin 群聊 |
 | Day 38（AutoGen 实战） | 研究员–程序员–测试员三人 RoundRobin；Ollama |
+| Day 39–40（CrewAI） | `crewai[litellm]` + Ollama；Agent/Task/Crew/Process |
 
 OpenRouter（可选）：在需要的 day 里 `cp .env.example .env` 填 `OPENROUTER_API_KEY`。
 
@@ -242,14 +243,14 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 3 | Agent + Tool Calling | `available` | 带工具的研究助手（含重试/降级） |
 | 4 | 性能优化 | `available` | Redis 缓存、异步、批处理、压测 |
 | 5 | 可观测与部署 | `available` | Trace + 监控 + Compose + JSON 日志 + 故障演练 → [week05/README.md](week05/README.md) |
-| 6 | Multi-Agent | `in_progress` | AutoGen AgentChat（Day36–38）→ CrewAI（后续）→ [week06/README.md](week06/README.md) |
+| 6 | Multi-Agent | `in_progress` | AutoGen（Day36–38）+ CrewAI 核心（Day39–40）→ 实战/对比（后续）→ [week06/README.md](week06/README.md) |
 | 7–8 | 工业项目 | `planned` | 智能客服 RAG + 投研 Multi-Agent |
 
 完整每日拆解：[docs/ROADMAP.md](docs/ROADMAP.md)
 
 ---
 
-## Day 1–38 完整索引
+## Day 1–40 完整索引
 
 | Day | 主题 | 代码目录 | 教程 |
 |:---:|------|----------|------|
@@ -287,6 +288,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 35 | 故障模拟 + ES/Kibana | [day35-incident](week05/day35-incident/) | [📖](notes/week05/day35-incident.md) |
 | 36–37 | AutoGen AgentChat 核心 | [day36-37-autogen-core](week06/day36-37-autogen-core/) | [📖](notes/week06/day36-37-autogen-core.md) |
 | 38 | AutoGen 三人协作实战 | [day38-autogen-team](week06/day38-autogen-team/) | [📖](notes/week06/day38-autogen-team.md) |
+| 39–40 | CrewAI 核心概念 | [day39-40-crewai-core](week06/day39-40-crewai-core/) | [📖](notes/week06/day39-40-crewai-core.md) |
 
 ---
 
@@ -294,7 +296,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 | 类型 | 涉及 Day | 说明 |
 |------|----------|------|
-| 仅 Ollama | 1–11, 15–20, 22, 26, 36–38 | 最轻；确保 `ollama serve` + 已 pull 模型 |
+| 仅 Ollama | 1–11, 15–20, 22, 26, 36–40 | 最轻；确保 `ollama serve` + 已 pull 模型 |
 | 首次 sync 较慢 | 4, 5–6, 8–11, 14 | sentence-transformers / torch；磁盘预留 **~2GB** |
 | 需要 Docker | 12, 14, 23, 31–33, 35 | Milvus / Redis / Grafana / 自建镜像 / Compose / ES+Kibana |
 | 需要网络 | 16, 21 | Open-Meteo / DuckDuckGo；无网有兜底 env |
@@ -308,6 +310,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | JSON 结构化日志 | 34 | structlog + FastAPI 中间件；端口 `8034`；stdout / `jq` |
 | 故障演练 + 最小 ES/Kibana | 35 | `FAULT` 注入；Compose ES+Kibana；端口 `8035` / `19200` / `15601` |
 | AutoGen AgentChat | 36–38 | `autogen-agentchat` + `autogen-ext[ollama]`；需本机 Ollama |
+| CrewAI | 39–40 | `crewai[litellm]`；`LLM(model="ollama/...", base_url=...)` |
 
 每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
 
@@ -317,7 +320,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ```text
 agent-dev-practice/
-├── week01/ … week06/       # Day 1–38 练习（Week6 进行中）
+├── week01/ … week06/       # Day 1–40 练习（Week6 进行中）
 ├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
 ├── docs/
 │   └── ROADMAP.md          # 8 周路线落地说明（公开）
@@ -326,7 +329,7 @@ agent-dev-practice/
 └── README.md
 ```
 
-**Tech Stack：** FastAPI · LangChain · LangGraph · Chroma / Milvus · Ollama · Redis · vLLM-Metal · Locust / JMeter · LangSmith · Prometheus · Grafana · RAGAs · Unstructured · AutoGen AgentChat
+**Tech Stack：** FastAPI · LangChain · LangGraph · Chroma / Milvus · Ollama · Redis · vLLM-Metal · Locust / JMeter · LangSmith · Prometheus · Grafana · RAGAs · Unstructured · AutoGen AgentChat · CrewAI
 
 ---
 
@@ -359,7 +362,7 @@ Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目�
 <details>
 <summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
 
-Week 5（可观测 / 部署）已 available（Day 29–35），见 [week05/README.md](week05/README.md)。Week 6（Multi-Agent）进行中（Day 36–38 available），见 [week06/README.md](week06/README.md)。
+Week 5（可观测 / 部署）已 available（Day 29–35），见 [week05/README.md](week05/README.md)。Week 6（Multi-Agent）进行中（Day 36–40 available），见 [week06/README.md](week06/README.md)。
 </details>
 
 ---
