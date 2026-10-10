@@ -450,16 +450,38 @@
 | 文章 | [notes/week06/day39-40-crewai-core.md](../notes/week06/day39-40-crewai-core.md) |
 | 代码 | [week06/day39-40-crewai-core](../week06/day39-40-crewai-core/) |
 
+### Day 41 — CrewAI 实战 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 实现一个"旅行规划师-本地向导-预订专员"的 Multi-Agent 系统 |
+| 本仓串联 | 三 Agent + 三 Task sequential；`context` 接力；Ollama；不真订票 |
+| 验收 | `kickoff` 见 planner→guide→booker；掌握检查；对外文章 |
+| 文章 | [notes/week06/day41-crewai-travel.md](../notes/week06/day41-crewai-travel.md) |
+| 代码 | [week06/day41-crewai-travel](../week06/day41-crewai-travel/) |
+
+### Day 42 — 框架对比与总结 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 对比 AutoGen 和 CrewAI 的设计哲学、优缺点和适用场景 |
+| 本仓串联 | 「开会 vs 流水线」对照 Day36–41；其它框架只扫名；无新脚本 |
+| 验收 | 口述哲学 / 优缺 / 场景选型；对外文章 |
+| 文章 | [notes/week06/day42-framework-compare.md](../notes/week06/day42-framework-compare.md) |
+| 代码 | [week06/day42-framework-compare](../week06/day42-framework-compare/) |
+
 ---
 
 ## 5. 第 6–8 周
 
-Week 1–5 已发布（Day1–35 available）；Week 6 进行中（Day36–40 available）。
+Week 1–6 已发布（Day1–42 available）。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
 | 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
-| 6 | `in_progress` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–40：AgentChat + CrewAI 核心；见 [week06/README.md](../week06/README.md) |
+| 6 | `available` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–42：AgentChat + CrewAI + 对比；见 [week06/README.md](../week06/README.md) |
 | 7–8 | `planned` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | 部署以 Compose 为底线 |
 
 ---

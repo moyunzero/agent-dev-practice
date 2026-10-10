@@ -1,0 +1,8 @@
+[project]
+name = "day41-crewai-travel"
+version = "0.1.0"
+description = "Day41: CrewAI travel planner-guide-booker Multi-Agent"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+  "crewai[litellm]==1.15.20",
+]
