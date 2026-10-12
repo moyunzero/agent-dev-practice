@@ -1,0 +1,11 @@
+[project]
+name = "day43-47-customer-service-rag"
+version = "0.1.0"
+description = "Week7 Day43-47 ecommerce customer-service hybrid RAG core (DB first, FAQ fallback)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "psycopg[binary]>=3.2.0",
+    "uvicorn[standard]>=0.52.4",
+]

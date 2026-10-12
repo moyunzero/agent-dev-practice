@@ -1,6 +1,6 @@
 # Agent Dev Practice
 
-**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · Day 1–42 可独立运行的 Agent/RAG/Multi-Agent 代码 + 零基础自洽长文教程**
+**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · Day 1–47 可独立运行的 Agent/RAG/Multi-Agent 代码 + 零基础自洽长文教程**
 
 > [AgentGuide](https://github.com/adongwanai/AgentGuide) 告诉你**学什么**；本仓库给你**能跑的代码**和**能直接跟的教程**。  
 > 每个 day 一个目录，`uv sync` 即可跑，不必一次啃完全仓。
@@ -10,6 +10,7 @@
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-black)](https://ollama.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Week 1–6](https://img.shields.io/badge/Week_1--6-available-brightgreen)](docs/ROADMAP.md)
+[![Week 7](https://img.shields.io/badge/Week_7-in__progress-yellow)](docs/ROADMAP.md)
 
 ---
 
@@ -23,7 +24,7 @@
 - [推荐体验路径](#推荐体验路径)
 - [架构一览](#架构一览)
 - [8 周 Roadmap](#8-周-roadmap)
-- [Day 1–42 完整索引](#day-142-完整索引)
+- [Day 1–47 完整索引](#day-147-完整索引)
 - [各 Day 依赖与耗时](#各-day-依赖与耗时)
 - [仓库结构](#仓库结构)
 - [常见问题](#常见问题)
@@ -37,7 +38,7 @@
 |---|--------|-----------|
 | 形态 | 路线、面试、知识地图 | **每日可运行代码 + 长文教程** |
 | 用法 | 规划学什么 | `cd weekXX/dayYY-*` → 跟文章 → 跑验收 |
-| 覆盖 | 8 周全栈 Agent 工程 | Week 1–6 available（Day 1–42）；Week 7–8 planned |
+| 覆盖 | 8 周全栈 Agent 工程 | Week 1–6 available（Day 1–42）；Week 7 in_progress（Day 43–47 available） |
 
 如果你正在跟 AgentGuide **开发岗 8 周计划**，可以直接把本仓当作**动手练习场**。
 
@@ -244,13 +245,13 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 4 | 性能优化 | `available` | Redis 缓存、异步、批处理、压测 |
 | 5 | 可观测与部署 | `available` | Trace + 监控 + Compose + JSON 日志 + 故障演练 → [week05/README.md](week05/README.md) |
 | 6 | Multi-Agent | `available` | AutoGen（Day36–38）+ CrewAI（Day39–41）+ 对比（Day42）→ [week06/README.md](week06/README.md) |
-| 7–8 | 工业项目 | `planned` | 智能客服 RAG + 投研 Multi-Agent |
+| 7–8 | 工业项目 | `in_progress` | 智能客服核心（Day43–47）→ 优化部署（48–51）→ 投研 Agent → [week07/README.md](week07/README.md) |
 
 完整每日拆解：[docs/ROADMAP.md](docs/ROADMAP.md)
 
 ---
 
-## Day 1–42 完整索引
+## Day 1–47 完整索引
 
 | Day | 主题 | 代码目录 | 教程 |
 |:---:|------|----------|------|
@@ -291,6 +292,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 39–40 | CrewAI 核心概念 | [day39-40-crewai-core](week06/day39-40-crewai-core/) | [📖](notes/week06/day39-40-crewai-core.md) |
 | 41 | CrewAI 旅行三人实战 | [day41-crewai-travel](week06/day41-crewai-travel/) | [📖](notes/week06/day41-crewai-travel.md) |
 | 42 | AutoGen vs CrewAI 对比 | [day42-framework-compare](week06/day42-framework-compare/) | [📖](notes/week06/day42-framework-compare.md) |
+| 43–47 | 智能客服 RAG 核心 | [day43-47-customer-service-rag](week07/day43-47-customer-service-rag/) | [📖](notes/week07/day43-47-customer-service-rag.md) |
 
 ---
 
@@ -314,6 +316,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | AutoGen AgentChat | 36–38 | `autogen-agentchat` + `autogen-ext[ollama]`；需本机 Ollama |
 | CrewAI | 39–41 | `crewai[litellm]`；`LLM(model="ollama/...", base_url=...)` |
 | 笔记对照 | 42 | 无新依赖；对照 Day36–41 做选型 |
+| Postgres + FastAPI | 43–47 | Docker Postgres；`psycopg`；FAQ 文档回退（本块仅库 Compose） |
 
 每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
 
@@ -323,7 +326,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ```text
 agent-dev-practice/
-├── week01/ … week06/       # Day 1–42 练习（Week6 available）
+├── week01/ … week07/       # Day 1–47 练习（Week7 进行中）
 ├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
 ├── docs/
 │   └── ROADMAP.md          # 8 周路线落地说明（公开）
@@ -365,7 +368,7 @@ Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目�
 <details>
 <summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
 
-Week 5（可观测 / 部署）与 Week 6（Multi-Agent）均已 available（Day 29–42），见 [week05/README.md](week05/README.md)、[week06/README.md](week06/README.md)。Week 7–8 planned。
+Week 5–6 已 available（Day 29–42）。Week 7 进行中（Day 43–47 智能客服核心 available；48–51 优化部署 planned），见 [week07/README.md](week07/README.md)。
 </details>
 
 ---

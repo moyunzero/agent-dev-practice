@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cs
+      POSTGRES_PASSWORD: cs
+      POSTGRES_DB: customer_service
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data/seed.sql:/docker-entrypoint-initdb.d/01-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cs -d customer_service"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
