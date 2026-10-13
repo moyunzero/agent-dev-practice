@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
+  <title id="title">Answer-grounded RAG evaluation</title>
+  <desc id="desc">A query produces a bound evidence set. Runtime citation integrity and fixture-backed semantic alignment are evaluated separately before an answer is accepted.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1L9 5L1 9" fill="none" stroke="context-stroke" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .title{font:600 24px system-ui,sans-serif;fill:#172033}
+      .heading{font:600 16px system-ui,sans-serif;fill:#172033}
+      .body{font:400 13px system-ui,sans-serif;fill:#3d4960}
+      .small{font:400 12px system-ui,sans-serif;fill:#657188}
+      .mono{font:500 12px ui-monospace,monospace;fill:#3d4960}
+      .line{fill:none;stroke:#64748b;stroke-width:1.8;marker-end:url(#arrow)}
+      .dash{fill:none;stroke:#64748b;stroke-width:1.5;stroke-dasharray:5 5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1080" height="620" fill="#f8fafc"/>
+  <text class="title" x="540" y="40" text-anchor="middle">Answer-grounded RAG：完整性与语义评测分层</text>
+
+  <rect x="35" y="82" width="175" height="105" rx="12" fill="#e8f1ff" stroke="#4e7ec7"/>
+  <text class="heading" x="122" y="114" text-anchor="middle">Query</text>
+  <text class="body" x="122" y="140" text-anchor="middle">当前问题</text>
+  <text class="small" x="122" y="163" text-anchor="middle">query-bound</text>
+
+  <rect x="255" y="82" width="210" height="105" rx="12" fill="#e8f1ff" stroke="#4e7ec7"/>
+  <text class="heading" x="360" y="114" text-anchor="middle">Source-grounded RAG</text>
+  <text class="body" x="360" y="140" text-anchor="middle">安全门禁 · Top-K · 预算</text>
+  <text class="small" x="360" y="163" text-anchor="middle">只输出 selected hits</text>
+
+  <rect x="510" y="72" width="240" height="125" rx="12" fill="#e7f5ec" stroke="#3f9b69"/>
+  <text class="heading" x="630" y="105" text-anchor="middle">EvidenceSet</text>
+  <text class="mono" x="630" y="132" text-anchor="middle">evidence_set_id</text>
+  <text class="body" x="630" y="157" text-anchor="middle">label + chunk + citation + digest</text>
+  <text class="small" x="630" y="180" text-anchor="middle">防跨 query 回答重放</text>
+
+  <rect x="795" y="72" width="250" height="125" rx="12" fill="#fff2db" stroke="#c98720"/>
+  <text class="heading" x="920" y="105" text-anchor="middle">GroundedAnswer</text>
+  <text class="body" x="920" y="132" text-anchor="middle">atomic claims + citations</text>
+  <text class="body" x="920" y="157" text-anchor="middle">或显式 abstention</text>
+  <text class="small" x="920" y="180" text-anchor="middle">结构化 provider output</text>
+
+  <path class="line" d="M210 134H247"/>
+  <path class="line" d="M465 134H502"/>
+  <path class="line" d="M750 134H787"/>
+
+  <rect x="70" y="265" width="410" height="205" rx="14" fill="#edf7ff" stroke="#4e7ec7" stroke-width="1.5"/>
+  <text class="heading" x="275" y="300" text-anchor="middle">Runtime Citation Integrity</text>
+  <text class="body" x="95" y="332">✓ evidence-set ID 属于本轮查询</text>
+  <text class="body" x="95" y="359">✓ label 与 citation path / lines 一致</text>
+  <text class="body" x="95" y="386">✓ source digest 与 chunk 仍然 fresh</text>
+  <text class="body" x="95" y="413">✓ quote 是 cited evidence 的精确片段</text>
+  <text class="body" x="95" y="440">✓ factual claim 不允许无引用</text>
+  <text class="small" x="275" y="460" text-anchor="middle">只验证 Harness 可确定事实</text>
+
+  <rect x="600" y="265" width="410" height="205" rx="14" fill="#f4efff" stroke="#7b61c9" stroke-width="1.5"/>
+  <text class="heading" x="805" y="300" text-anchor="middle">Fixture-backed Gold Evaluation</text>
+  <text class="body" x="625" y="332">✓ claim 文本匹配显式 benchmark gold</text>
+  <text class="body" x="625" y="359">✓ citation source 属于 allowed support</text>
+  <text class="body" x="625" y="386">✓ 支持的 claim 没有被遗漏</text>
+  <text class="body" x="625" y="413">✓ 无证据 case 必须拒答</text>
+  <text class="body" x="625" y="440">✓ adversarial answer 得到预期 issue</text>
+  <text class="small" x="805" y="460" text-anchor="middle">不把字符串规则冒充通用 NLI judge</text>
+
+  <path class="line" d="M875 197V225H275V257"/>
+  <path class="line" d="M965 197V225H805V257"/>
+
+  <rect x="275" y="520" width="530" height="70" rx="12" fill="#e8f7ee" stroke="#3f9b69" stroke-width="1.5"/>
+  <text class="heading" x="540" y="548" text-anchor="middle">Decision Manifest</text>
+  <text class="body" x="540" y="573" text-anchor="middle">metrics · case verdicts · issue codes · auditable artifacts</text>
+  <path class="line" d="M275 470V495H455V512"/>
+  <path class="line" d="M805 470V495H625V512"/>
+
+  <text class="small" x="540" y="608" text-anchor="middle">只有两层都通过，回答才满足本离线 benchmark；任一层失败都保留可观察原因。</text>
+</svg>

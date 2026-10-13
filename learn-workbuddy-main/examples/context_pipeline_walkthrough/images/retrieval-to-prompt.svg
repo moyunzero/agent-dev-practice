@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Retrieval-to-Prompt Context Pipeline</title>
+  <desc id="desc">A scoped query flows through source-grounded RAG and policy-first routing, then through validation, deduplication, S15 budget planning, and a decision manifest.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#020617" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7dd3fc"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="720" rx="30" fill="url(#background)"/>
+  <text x="60" y="68" fill="#f8fafc" font-family="Arial, sans-serif" font-size="34" font-weight="700">Retrieval-to-Prompt Context Pipeline</text>
+  <text x="60" y="104" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18">source · scope · safety · value · total budget</text>
+
+  <g font-family="Arial, sans-serif" filter="url(#shadow)">
+    <rect x="60" y="170" width="210" height="115" rx="18" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="165" y="211" text-anchor="middle" fill="#e0f2fe" font-size="21" font-weight="700">Query + Grant</text>
+    <text x="165" y="244" text-anchor="middle" fill="#94a3b8" font-size="15">user · workspace · task</text>
+    <text x="165" y="266" text-anchor="middle" fill="#94a3b8" font-size="15">tools · network</text>
+
+    <rect x="355" y="145" width="235" height="115" rx="18" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <text x="472" y="186" text-anchor="middle" fill="#d1fae5" font-size="21" font-weight="700">Source-grounded RAG</text>
+    <text x="472" y="219" text-anchor="middle" fill="#94a3b8" font-size="15">fresh citation · unsafe gate</text>
+    <text x="472" y="241" text-anchor="middle" fill="#94a3b8" font-size="15">Markdown evidence</text>
+
+    <rect x="355" y="305" width="235" height="115" rx="18" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="472" y="346" text-anchor="middle" fill="#ede9fe" font-size="21" font-weight="700">Policy-first Router</text>
+    <text x="472" y="379" text-anchor="middle" fill="#94a3b8" font-size="15">Skill · Memory · Reflection</text>
+    <text x="472" y="401" text-anchor="middle" fill="#94a3b8" font-size="15">scope · permission</text>
+
+    <rect x="680" y="215" width="220" height="135" rx="18" fill="#1e293b" stroke="#fb7185" stroke-width="2"/>
+    <text x="790" y="255" text-anchor="middle" fill="#ffe4e6" font-size="21" font-weight="700">Context Boundary</text>
+    <text x="790" y="288" text-anchor="middle" fill="#94a3b8" font-size="15">revalidate provenance</text>
+    <text x="790" y="311" text-anchor="middle" fill="#94a3b8" font-size="15">normalize + dedupe</text>
+    <text x="790" y="334" text-anchor="middle" fill="#94a3b8" font-size="15">atomic ContextBlock</text>
+
+    <rect x="970" y="215" width="180" height="135" rx="18" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+    <text x="1060" y="255" text-anchor="middle" fill="#fef3c7" font-size="21" font-weight="700">S15 Planner</text>
+    <text x="1060" y="288" text-anchor="middle" fill="#94a3b8" font-size="15">required first</text>
+    <text x="1060" y="311" text-anchor="middle" fill="#94a3b8" font-size="15">value selection</text>
+    <text x="1060" y="334" text-anchor="middle" fill="#94a3b8" font-size="15">hard total budget</text>
+
+    <rect x="325" y="535" width="250" height="115" rx="18" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="450" y="576" text-anchor="middle" fill="#e0f2fe" font-size="21" font-weight="700">Final Prompt</text>
+    <text x="450" y="609" text-anchor="middle" fill="#94a3b8" font-size="15">rules + selected evidence</text>
+    <text x="450" y="632" text-anchor="middle" fill="#94a3b8" font-size="15">stable source labels</text>
+
+    <rect x="690" y="535" width="250" height="115" rx="18" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+    <text x="815" y="576" text-anchor="middle" fill="#d1fae5" font-size="21" font-weight="700">Decision Manifest</text>
+    <text x="815" y="609" text-anchor="middle" fill="#94a3b8" font-size="15">included · dropped · rejected</text>
+    <text x="815" y="632" text-anchor="middle" fill="#94a3b8" font-size="15">offline metrics</text>
+  </g>
+
+  <g fill="none" stroke="#7dd3fc" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M270 215 H330 Q345 215 345 200 V202 H345"/>
+    <path d="M270 245 H330 Q345 245 345 360 H345"/>
+    <path d="M590 202 H640 Q670 202 670 260 H670"/>
+    <path d="M590 362 H640 Q670 362 670 305 H670"/>
+    <path d="M900 282 H960"/>
+    <path d="M1060 350 V460 H450 V525"/>
+    <path d="M1060 350 V460 H815 V525"/>
+  </g>
+  <text x="600" y="692" text-anchor="middle" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">Retrieved relevance never overrides grant, provenance, freshness, or required context.</text>
+</svg>

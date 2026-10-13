@@ -1,0 +1,159 @@
+#!/usr/bin/env python3
+"""Real-API smoke runner — one command to verify live model calls.
+
+CI never calls a real model (cost, flakiness, secrets). This script is the
+opt-in counterpart: a reader with a key runs it once to confirm the whole
+stack works against a live provider, across both the lesson entrypoints and
+the mini harness demo.
+
+Usage:
+    # DeepSeek (needs DEEPSEEK_API_KEY)
+    python scripts/run_real_smoke.py --provider deepseek
+
+    # OpenAI (needs OPENAI_API_KEY, optional OPENAI_MODEL)
+    python scripts/run_real_smoke.py --provider openai
+
+    # OpenAI-compatible Chat Completions gateway
+    python scripts/run_real_smoke.py --provider openai-chat
+
+    # Pick which targets to run (default: mini)
+    python scripts/run_real_smoke.py --targets mini full s01 s24
+
+    # Evaluate every chapter entrypoint and write model/tool traces
+    python scripts/run_real_smoke.py --provider deepseek --targets all-lessons
+
+This intentionally lives outside the pytest suite: it is a manual,
+key-required verification, not an automated test. It exits non-zero on the
+first failure so it is still CI-composable if a maintainer wires it into a
+gated, secret-bearing job.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _model_lesson_targets() -> list[Path]:
+    return sorted(ROOT.glob("s[0-9][0-9]_*/code.py"))
+
+
+def _load_env() -> None:
+    try:
+        from dotenv import load_dotenv
+    except Exception:
+        return
+    load_dotenv(ROOT / ".env", override=True)
+
+
+def _provider_ready(provider: str) -> tuple[bool, str]:
+    if provider == "anthropic":
+        ok = bool(os.getenv("ANTHROPIC_API_KEY") and os.getenv("MODEL_ID"))
+        return ok, "ANTHROPIC_API_KEY and MODEL_ID"
+    if provider == "deepseek":
+        ok = bool(os.getenv("DEEPSEEK_API_KEY"))
+        return ok, "DEEPSEEK_API_KEY"
+    if provider == "openai":
+        ok = bool(os.getenv("OPENAI_API_KEY"))
+        return ok, "OPENAI_API_KEY"
+    if provider == "openai-chat":
+        ok = bool(os.getenv("OPENAI_CHAT_API_KEY") or os.getenv("OPENAI_API_KEY"))
+        return ok, "OPENAI_CHAT_API_KEY or OPENAI_API_KEY"
+    return False, provider
+
+
+def _run(cmd: list[str], stdin: str | None = None, timeout: int = 120, env: dict[str, str] | None = None) -> int:
+    print("\n" + "=" * 72)
+    print("$", " ".join(cmd))
+    print("=" * 72)
+    merged_env = os.environ.copy()
+    if env:
+        merged_env.update(env)
+    result = subprocess.run(
+        cmd, cwd=ROOT, text=True, input=stdin,
+        stdout=None, stderr=subprocess.STDOUT, timeout=timeout, env=merged_env,
+    )
+    return result.returncode
+
+
+def smoke_mini(provider: str) -> int:
+    return _run([
+        sys.executable, "examples/mini_workbuddy_demo/code.py",
+        "--mode", "real", "--provider", provider,
+    ])
+
+
+def smoke_full_tour(provider: str) -> int:
+    home = tempfile.mkdtemp(prefix=f"learn-workbuddy-{provider}-full-")
+    return _run([
+        sys.executable, "examples/full_tour/code.py",
+        "--provider", provider,
+        "--home", home,
+    ])
+
+
+def smoke_lesson(script: str, provider: str) -> int:
+    """Run one chapter's shared model-backed eval path."""
+    trace_dir = Path(tempfile.mkdtemp(prefix=f"learn-workbuddy-{provider}-trace-"))
+    trace_path = trace_dir / (Path(script).parent.name + ".jsonl")
+    return _run(
+        [sys.executable, script, "--eval", "--provider", provider, "--trace", str(trace_path)],
+        timeout=240,
+        env={"MINI_WORKBUDDY_HOME": tempfile.mkdtemp(prefix=f"learn-workbuddy-{provider}-lesson-")},
+    )
+
+
+def smoke_all_lessons(provider: str) -> int:
+    failures: list[str] = []
+    for script in _model_lesson_targets():
+        rel = script.relative_to(ROOT).as_posix()
+        code = smoke_lesson(rel, provider)
+        if code != 0:
+            failures.append(f"{rel} exited {code}")
+    if failures:
+        print("\n".join(failures))
+        return 1
+    return 0
+
+
+TARGETS = {
+    "mini": lambda p: smoke_mini(p),
+    "full": lambda p: smoke_full_tour(p),
+    "s01": lambda p: smoke_lesson("s01_agent_loop/code.py", p),
+    "s24": lambda p: smoke_lesson("s24_comprehensive/code.py", p),
+    "all-lessons": smoke_all_lessons,
+}
+
+
+def main() -> None:
+    _load_env()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--provider", choices=["anthropic", "deepseek", "openai", "openai-chat"], default="deepseek")
+    parser.add_argument("--targets", nargs="+", default=["mini"],
+                        choices=sorted(TARGETS), help="which smokes to run")
+    args = parser.parse_args()
+
+    ready, needed = _provider_ready(args.provider)
+    if not ready:
+        raise SystemExit(
+            f"Real smoke with --provider {args.provider} requires {needed}. "
+            "Copy .env.example to .env and fill it in."
+        )
+
+    print(f"Real API smoke — provider={args.provider}, targets={args.targets}")
+    for name in args.targets:
+        code = TARGETS[name](args.provider)
+        if code != 0:
+            raise SystemExit(f"[FAIL] target '{name}' exited {code}")
+        print(f"[ok] {name}")
+    print("\nAll real-API smokes passed.")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+.env
+.pytest_cache/
+.memory/
+.transcripts/
+.task_outputs/
+.tasks/
+.audit-log/
+.workbuddy/
+.workbuddy_user/
+.workbuddy_eval/
+.learn_workbuddy/
+.deliverables/
+.widgets/
+benchmark-runs/
+.tmp/
+*.db
+*.db-wal
+*.db-shm
+
+# Node (for s04+ lessons)
+node_modules/

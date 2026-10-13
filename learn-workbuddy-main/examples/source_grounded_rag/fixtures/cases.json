@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "case_id": "permission-before-tool",
+      "query": "Which permission hook runs before tool execution and what operations require approval?",
+      "expected_sources": ["agent-harness.md"],
+      "forbidden_sources": ["untrusted-note.md"],
+      "top_k": 2,
+      "prompt_budget_chars": 1800
+    },
+    {
+      "case_id": "workspace-memory-writeback",
+      "query": "检索命中可以自动写回 workspace memory 吗？",
+      "expected_sources": ["layered-memory.md"],
+      "forbidden_sources": [],
+      "top_k": 2,
+      "prompt_budget_chars": 1800
+    },
+    {
+      "case_id": "stale-source-validation",
+      "query": "How should a harness validate stale retrieved evidence and citations?",
+      "expected_sources": ["rag-security.md"],
+      "forbidden_sources": ["untrusted-note.md"],
+      "top_k": 2,
+      "prompt_budget_chars": 1800
+    },
+    {
+      "case_id": "negative-abstention",
+      "query": "quarterly payroll tax reconciliation deadline",
+      "expected_sources": [],
+      "forbidden_sources": ["untrusted-note.md"],
+      "top_k": 2,
+      "prompt_budget_chars": 1800
+    }
+  ]
+}
