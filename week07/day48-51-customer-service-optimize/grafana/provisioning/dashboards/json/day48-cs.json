@@ -1,0 +1,80 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "reqps",
+          "custom": { "drawStyle": "line", "fillOpacity": 10, "showPoints": "never" }
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total{job=\"day48-cs\"}[1m]))",
+          "legendFormat": "QPS (approx)",
+          "refId": "A"
+        }
+      ],
+      "title": "Request rate (QPS ≈ rate)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "custom": { "drawStyle": "line", "fillOpacity": 10, "showPoints": "never" }
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "id": 2,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(http_request_duration_highr_seconds_bucket{job=\"day48-cs\"}[1m])) by (le))",
+          "legendFormat": "P99",
+          "refId": "A"
+        }
+      ],
+      "title": "P99 latency (from Histogram)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "custom": { "drawStyle": "line", "fillOpacity": 10, "showPoints": "never" }
+        },
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 8 },
+      "id": 3,
+      "targets": [
+        {
+          "expr": "sum(rate(http_requests_total{job=\"day48-cs\",status=\"5xx\"}[1m])) / sum(rate(http_requests_total{job=\"day48-cs\"}[1m]))",
+          "legendFormat": "error rate",
+          "refId": "A"
+        }
+      ],
+      "title": "Error rate (5xx / all)",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["day48", "customer-service"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timezone": "browser",
+  "title": "Day48 · Customer Service API",
+  "uid": "day48-cs",
+  "version": 1
+}

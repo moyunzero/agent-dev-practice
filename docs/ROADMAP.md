@@ -483,17 +483,28 @@
 | 文章 | [notes/week07/day43-47-customer-service-rag.md](../notes/week07/day43-47-customer-service-rag.md) |
 | 代码 | [week07/day43-47-customer-service-rag](../week07/day43-47-customer-service-rag/) |
 
+### Day 48–51 — 项目一：优化与部署 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 完成性能优化、监控集成和 Docker 部署，撰写项目文档 |
+| 本仓串联 | Compose 整栈 API+PG+Prom+Grafana；Locust QPS/P99；请求日志等价 Trace；README 四块 |
+| 验收 | 一键起栈 curl `/ask`；targets UP；压测有数字对照门槛；文档可复现 |
+| 文章 | [notes/week07/day48-51-customer-service-optimize.md](../notes/week07/day48-51-customer-service-optimize.md) |
+| 代码 | [week07/day48-51-customer-service-optimize](../week07/day48-51-customer-service-optimize/) |
+
 ---
 
 ## 5. 第 6–8 周
 
-Week 1–6 已发布（Day1–42 available）；Week 7 进行中（Day43–47 available）。
+Week 1–6 已发布（Day1–42 available）；Week 7 进行中（Day43–51 available；下一块 Day52–56）。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
 | 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
 | 6 | `available` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–42：AgentChat + CrewAI + 对比；见 [week06/README.md](../week06/README.md) |
-| 7–8 | `in_progress` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | Day43–47 核心已发布；48–51 优化部署；见 [week07/README.md](../week07/README.md) |
+| 7–8 | `in_progress` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | Day43–51 项目一已发布；52–56 投研；见 [week07/README.md](../week07/README.md) |
 
 ---
 

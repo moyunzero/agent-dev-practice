@@ -1,0 +1,57 @@
+# Day48–51 Lesson 1 — 整栈：Postgres + API
+#
+#   docker compose up -d --build
+#   curl -s http://127.0.0.1:8048/ask -H 'Content-Type: application/json' \
+#     -d '{"q":"订单 ORD-1001 到哪了？"}'
+#
+# 宿主机 PG 映射用 5434（避让本机已占用的 5433）；容器互连仍是 postgres:5432
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cs
+      POSTGRES_PASSWORD: cs
+      POSTGRES_DB: customer_service
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./data/seed.sql:/docker-entrypoint-initdb.d/01-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cs -d customer_service"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+  api:
+    build: .
+    ports:
+      - "8048:8000"
+    environment:
+      DATABASE_URL: "postgresql://cs:cs@postgres:5432/customer_service"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Lesson 3：Prometheus 刮 api，Grafana 画大盘（复用 Day31 思路）
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    ports:
+      - "19048:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - api
+
+  grafana:
+    image: grafana/grafana:11.2.0
+    ports:
+      - "13048:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on:
+      - prometheus

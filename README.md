@@ -245,13 +245,13 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 4 | 性能优化 | `available` | Redis 缓存、异步、批处理、压测 |
 | 5 | 可观测与部署 | `available` | Trace + 监控 + Compose + JSON 日志 + 故障演练 → [week05/README.md](week05/README.md) |
 | 6 | Multi-Agent | `available` | AutoGen（Day36–38）+ CrewAI（Day39–41）+ 对比（Day42）→ [week06/README.md](week06/README.md) |
-| 7–8 | 工业项目 | `in_progress` | 智能客服核心（Day43–47）→ 优化部署（48–51）→ 投研 Agent → [week07/README.md](week07/README.md) |
+| 7–8 | 工业项目 | `in_progress` | 智能客服（Day43–51）→ 投研 Agent（52–56）→ [week07/README.md](week07/README.md) |
 
 完整每日拆解：[docs/ROADMAP.md](docs/ROADMAP.md)
 
 ---
 
-## Day 1–47 完整索引
+## Day 1–51 完整索引
 
 | Day | 主题 | 代码目录 | 教程 |
 |:---:|------|----------|------|
@@ -293,6 +293,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 41 | CrewAI 旅行三人实战 | [day41-crewai-travel](week06/day41-crewai-travel/) | [📖](notes/week06/day41-crewai-travel.md) |
 | 42 | AutoGen vs CrewAI 对比 | [day42-framework-compare](week06/day42-framework-compare/) | [📖](notes/week06/day42-framework-compare.md) |
 | 43–47 | 智能客服 RAG 核心 | [day43-47-customer-service-rag](week07/day43-47-customer-service-rag/) | [📖](notes/week07/day43-47-customer-service-rag.md) |
+| 48–51 | 智能客服优化与部署 | [day48-51-customer-service-optimize](week07/day48-51-customer-service-optimize/) | [📖](notes/week07/day48-51-customer-service-optimize.md) |
 
 ---
 
@@ -326,7 +327,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ```text
 agent-dev-practice/
-├── week01/ … week07/       # Day 1–47 练习（Week7 进行中）
+├── week01/ … week07/       # Day 1–51 练习（Week7 进行中）
 ├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
 ├── docs/
 │   └── ROADMAP.md          # 8 周路线落地说明（公开）
@@ -368,7 +369,7 @@ Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目�
 <details>
 <summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
 
-Week 5–6 已 available（Day 29–42）。Week 7 进行中（Day 43–47 智能客服核心 available；48–51 优化部署 planned），见 [week07/README.md](week07/README.md)。
+Week 5–6 已 available（Day 29–42）。Week 7 进行中（Day 43–51 智能客服 available；52–56 投研 planned），见 [week07/README.md](week07/README.md)。
 </details>
 
 ---

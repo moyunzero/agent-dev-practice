@@ -1,0 +1,9 @@
+[project]
+name = "day48-51-customer-service-optimize"
+version = "0.1.0"
+description = "Week7 Day48-51 optimize/deploy: compose, metrics, load test"
+readme = "LEARN.md"
+requires-python = ">=3.12"
+dependencies = [
+    "locust>=2.32.0",
+]
