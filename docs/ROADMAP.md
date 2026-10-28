@@ -494,17 +494,39 @@
 | 文章 | [notes/week07/day48-51-customer-service-optimize.md](../notes/week07/day48-51-customer-service-optimize.md) |
 | 代码 | [week07/day48-51-customer-service-optimize](../week07/day48-51-customer-service-optimize/) |
 
+### Day 52–56 — 项目二：自动化投研 Agent ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 完成需求分析、Agent 设计、工具开发和工作流实现 |
+| 本仓串联 | CrewAI 三人 sequential（搜集/财报分析/撰写）；≥5 工具 + fixture 等价；中间产出落盘；tenacity 重试/降级 |
+| 验收 | step01 五工具；step02 kickoff + intermediate/；step03 重试与降级；不荐股 |
+| 文章 | [notes/week07/day52-56-research-agent.md](../notes/week07/day52-56-research-agent.md) |
+| 代码 | [week07/day52-56-research-agent](../week07/day52-56-research-agent/) |
+
+### Day 57–58 — 简历撰写与项目总结 ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 按照开发岗模板，将两个项目经历量化地写入简历 |
+| 本仓串联 | 三段结构；客服 QPS/P99+Compose/监控；投研三人+工具+韧性；数字纪律与 XX 占位 |
+| 验收 | `resume_projects.md` 可粘贴；无未测虚数写死；能口述两项目差异 |
+| 文章 | [notes/week07/day57-58-resume.md](../notes/week07/day57-58-resume.md) |
+| 代码 | [week07/day57-58-resume](../week07/day57-58-resume/) |
+
 ---
 
 ## 5. 第 6–8 周
 
-Week 1–6 已发布（Day1–42 available）；Week 7 进行中（Day43–51 available；下一块 Day52–56）。
+Week 1–6 已发布（Day1–42 available）；Week 7 进行中（Day43–58 available；下一块 Day59–60）。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
 | 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
 | 6 | `available` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–42：AgentChat + CrewAI + 对比；见 [week06/README.md](../week06/README.md) |
-| 7–8 | `in_progress` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | Day43–51 项目一已发布；52–56 投研；见 [week07/README.md](../week07/README.md) |
+| 7–8 | `in_progress` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | Day43–58 已发布；59–60 Mock；见 [week07/README.md](../week07/README.md) |
 
 ---
 

@@ -1,0 +1,17 @@
+{
+  "company": "Acme Corp",
+  "filings": [
+    {
+      "form": "10-K",
+      "filed": "2025-03-01",
+      "period": "FY2024",
+      "url": "fixture://acme/10-K-2024"
+    },
+    {
+      "form": "10-Q",
+      "filed": "2025-08-15",
+      "period": "Q2-2025",
+      "url": "fixture://acme/10-Q-2025Q2"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "company": "Acme Corp",
+  "period": "FY2024",
+  "revenue_usd_m": 420.5,
+  "net_income_usd_m": 38.2,
+  "gross_margin_pct": 42.5,
+  "notes": "数字来自 fixtures，非实时 SEC；仅供流水线演示与对账。"
+}

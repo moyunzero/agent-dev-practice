@@ -245,13 +245,13 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 4 | 性能优化 | `available` | Redis 缓存、异步、批处理、压测 |
 | 5 | 可观测与部署 | `available` | Trace + 监控 + Compose + JSON 日志 + 故障演练 → [week05/README.md](week05/README.md) |
 | 6 | Multi-Agent | `available` | AutoGen（Day36–38）+ CrewAI（Day39–41）+ 对比（Day42）→ [week06/README.md](week06/README.md) |
-| 7–8 | 工业项目 | `in_progress` | 智能客服（Day43–51）→ 投研 Agent（52–56）→ [week07/README.md](week07/README.md) |
+| 7–8 | 工业项目 | `in_progress` | Day43–58 available → 面试 Mock（59–60）→ [week07/README.md](week07/README.md) |
 
 完整每日拆解：[docs/ROADMAP.md](docs/ROADMAP.md)
 
 ---
 
-## Day 1–51 完整索引
+## Day 1–58 完整索引
 
 | Day | 主题 | 代码目录 | 教程 |
 |:---:|------|----------|------|
@@ -294,6 +294,8 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | 42 | AutoGen vs CrewAI 对比 | [day42-framework-compare](week06/day42-framework-compare/) | [📖](notes/week06/day42-framework-compare.md) |
 | 43–47 | 智能客服 RAG 核心 | [day43-47-customer-service-rag](week07/day43-47-customer-service-rag/) | [📖](notes/week07/day43-47-customer-service-rag.md) |
 | 48–51 | 智能客服优化与部署 | [day48-51-customer-service-optimize](week07/day48-51-customer-service-optimize/) | [📖](notes/week07/day48-51-customer-service-optimize.md) |
+| 52–56 | 自动化投研 Agent | [day52-56-research-agent](week07/day52-56-research-agent/) | [📖](notes/week07/day52-56-research-agent.md) |
+| 57–58 | 简历撰写与项目总结 | [day57-58-resume](week07/day57-58-resume/) | [📖](notes/week07/day57-58-resume.md) |
 
 ---
 
@@ -318,6 +320,9 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 | CrewAI | 39–41 | `crewai[litellm]`；`LLM(model="ollama/...", base_url=...)` |
 | 笔记对照 | 42 | 无新依赖；对照 Day36–41 做选型 |
 | Postgres + FastAPI | 43–47 | Docker Postgres；`psycopg`；FAQ 文档回退（本块仅库 Compose） |
+| Compose 整栈 + 压测 | 48–51 | API+PG+Prom+Grafana；Locust；端口见 day README |
+| CrewAI 投研小队 | 52–56 | `crewai[litellm]` + tenacity；本机 Ollama；工具默认 fixture（无付费 Key） |
+| 简历文档日 | 57–58 | 无新依赖；产出 `resume_projects.md` 可粘贴块 |
 
 每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
 
@@ -327,7 +332,7 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ```text
 agent-dev-practice/
-├── week01/ … week07/       # Day 1–51 练习（Week7 进行中）
+├── week01/ … week07/       # Day 1–58 练习（Week7 进行中；59–60 planned）
 ├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
 ├── docs/
 │   └── ROADMAP.md          # 8 周路线落地说明（公开）
@@ -369,7 +374,7 @@ Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目�
 <details>
 <summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
 
-Week 5–6 已 available（Day 29–42）。Week 7 进行中（Day 43–51 智能客服 available；52–56 投研 planned），见 [week07/README.md](week07/README.md)。
+Week 5–6 已 available（Day 29–42）。Week 7 进行中（Day 43–58 available；下一块 59–60 面试 Mock），见 [week07/README.md](week07/README.md)。
 </details>
 
 ---

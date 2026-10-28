@@ -10,6 +10,11 @@
 # 本地工具包（如 Day28 JMeter 解压目录）
 **/.tools/
 
+# Day52–56 投研运行产物
+**/day52-56-research-agent/output/
+**/day52-56-research-agent/intermediate/
+**/day52-56-research-agent/.venv/
+
 # 运行产物
 **/jmeter-out/
 **/jmeter-out-*/
