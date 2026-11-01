@@ -1,332 +1,151 @@
 # Agent Dev Practice
 
-**对齐 [AgentGuide](https://github.com/adongwanai/AgentGuide) 8 周开发岗路线 · Day 1–47 可独立运行的 Agent/RAG/Multi-Agent 代码 + 零基础自洽长文教程**
+**AgentGuide 开发岗 8 周路线的动手练习场** — Day 1–60 全线可跑。
 
-> [AgentGuide](https://github.com/adongwanai/AgentGuide) 告诉你**学什么**；本仓库给你**能跑的代码**和**能直接跟的教程**。  
-> 每个 day 一个目录，`uv sync` 即可跑，不必一次啃完全仓。
+[AgentGuide](https://github.com/adongwanai/AgentGuide) 告诉你学什么；本仓库给你：**每天一个目录、可验收的代码、零基础能跟的长文**。  
+跟完带走两套简历级项目（智能客服 RAG + 投研 Multi-Agent），外加量化简历块与系统设计口述骨架。
 
 [![Python](https://img.shields.io/badge/Python-3.12+-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![uv](https://img.shields.io/badge/package-uv-orange)](https://docs.astral.sh/uv/)
+[![uv](https://img.shields.io/badge/uv-ready-orange)](https://docs.astral.sh/uv/)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-black)](https://ollama.com/)
+[![Day 1–60](https://img.shields.io/badge/Day_1--60-available-brightgreen)](docs/ROADMAP.md)
+[![Week 1–8](https://img.shields.io/badge/Week_1--8-complete-brightgreen)](docs/ROADMAP.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Week 1–6](https://img.shields.io/badge/Week_1--6-available-brightgreen)](docs/ROADMAP.md)
-[![Week 7](https://img.shields.io/badge/Week_7-in__progress-yellow)](docs/ROADMAP.md)
+
+> **目录小提示：** 第 7–8 周共用 [`week07/`](week07/README.md)（上游把工业项目与面试合成一块），不是少做一周。
 
 ---
 
-## 目录
+## 本仓解决什么问题
 
-- [为什么做这个仓库](#为什么做这个仓库)
-- [亮点](#亮点)
-- [适合谁](#适合谁)
-- [环境准备](#环境准备)
-- [Quick Start（Day 1）](#quick-startday-1)
-- [推荐体验路径](#推荐体验路径)
-- [架构一览](#架构一览)
-- [8 周 Roadmap](#8-周-roadmap)
-- [Day 1–47 完整索引](#day-147-完整索引)
-- [各 Day 依赖与耗时](#各-day-依赖与耗时)
-- [仓库结构](#仓库结构)
-- [常见问题](#常见问题)
-- [贡献与反馈](#贡献与反馈)
+| 常见卡点 | 这里怎么处理 |
+|----------|--------------|
+| 路线很长，不知道从哪动手 | 每个 day 独立目录 + `uv sync` 就能跑 |
+| 教程只讲概念，没有验收 | day README：**文件说明 → 推荐顺序 → 验收命令** |
+| 工业项目缺可写进简历的证据 | 客服有 Locust QPS/P99 + Compose 监控；投研有三人 Crew + 中间产出 |
+| 面试不会讲系统设计 | Day59–60：四步骨架 + 追问卡 + Mock 复盘 |
 
----
+**和 AgentGuide 的分工**
 
-## 为什么做这个仓库
-
-| | [AgentGuide](https://github.com/adongwanai/AgentGuide) | **本仓库** |
-|---|--------|-----------|
-| 形态 | 路线、面试、知识地图 | **每日可运行代码 + 长文教程** |
-| 用法 | 规划学什么 | `cd weekXX/dayYY-*` → 跟文章 → 跑验收 |
-| 覆盖 | 8 周全栈 Agent 工程 | Week 1–6 available（Day 1–42）；Week 7 in_progress（Day 43–47 available） |
-
-如果你正在跟 AgentGuide **开发岗 8 周计划**，可以直接把本仓当作**动手练习场**。
+| | AgentGuide | 本仓库 |
+|--|------------|--------|
+| 角色 | 学什么 / 面试地图 | **怎么跑 / 怎么跟练** |
+| 产出 | 知识与规划 | 代码 + [`notes/`](notes/) 长文（40+ 篇） |
 
 ---
 
-## 亮点
+## 60 秒跑通 Day 1
 
-- **按工程顺序**：FastAPI → LangChain LCEL → Naive RAG → Hybrid/Milvus/RAGAs → ReAct Agent → Redis/异步/压测 → LangSmith → Prometheus → Grafana → Docker → Compose
-- **每天独立**：各 day 自带 `pyproject.toml` + `uv.lock`；clone 单目录即可开始
-- **33 篇长文**：[`notes/`](notes/) 里每篇零基础自洽（名词表 + 完整代码 + 坑 + 边界），可单独转发
-- **本地优先**：默认 Ollama；OpenRouter 可选；Embedding 用 sentence-transformers 本地跑
-- **有验收标准**：每个 day README 含**文件说明**、**推荐执行顺序**，可不看长文独立跟练
-- **路线不缩水**：强制目标对齐 AgentGuide 原文，详见 [`docs/ROADMAP.md`](docs/ROADMAP.md)
-
----
-
-## 适合谁
-
-- 有 Python 基础，想**系统跟练** Agent / RAG 工程落地
-- 已看 AgentGuide 路线，需要**配套代码和教程**
-- 想要「能抄结构」的 FastAPI + LangChain 项目骨架，而不是只看 PPT
-
-**不太适合**：找开箱即用 SaaS 产品（请看 [Dify](https://github.com/langgenius/dify) / [RAGFlow](https://github.com/infiniflow/ragflow)）；完全零编程基础（需先补 Python）。
-
----
-
-## 环境准备
-
-### 必装
-
-| 工具 | 用途 | 安装 |
-|------|------|------|
-| **Python 3.12+** | 运行所有 demo | [python.org](https://www.python.org/) 或 pyenv |
-| **[uv](https://docs.astral.sh/uv/)** | 依赖管理与运行 | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
-| **[Ollama](https://ollama.com/)** | 本地 LLM | 官网下载；macOS 也可 `brew install ollama` |
-
-### Ollama 最小 setup（Day 1 前完成）
-
-```bash
-# 1. 启动 Ollama（若未自动运行）
-ollama serve          # 或从菜单栏/App 启动
-
-# 2. 拉一个通用 chat 模型（Day 1 / 多数 Agent day 够用）
-ollama pull qwen2:7b
-# 或更小：ollama pull qwen2.5:0.5b
-
-# 3. 确认
-ollama list
-curl -s http://127.0.0.1:11434/api/tags | head
-```
-
-### 按 week 额外需要
-
-| 何时 | 额外依赖 |
-|------|----------|
-| Day 4+（Embedding） | 首次 `uv sync` 会拉 sentence-transformers / torch，**约 5–15 分钟** |
-| Day 12 / 14（Milvus） | Docker Desktop + `docker compose up -d` |
-| Day 23（Redis） | Docker + `docker compose up -d`（本仓 Redis 端口 6389） |
-| Day 27（vLLM） | Apple Silicon：`vLLM-Metal` 独立 venv（见 day README） |
-| Day 28（压测） | Locust（`uv sync` 即可）；JMeter 可选 |
-| Day 29（LangSmith） | [LangSmith](https://smith.langchain.com/) API Key；复用 Day21 + Ollama |
-| Day 30（Prometheus） | FastAPI Instrumentator；curl `/metrics` 即可（Grafana 见 Day31） |
-| Day 31（Grafana） | Docker Compose；端口 19090/13031；需 Day30 `:8030` |
-| Day 32（Dockerfile） | Docker build；宿主机 `8032` → 容器 `8000` |
-| Day 33（Compose） | Docker Compose；FastAPI + Redis；端口 `8033` / `6389` |
-| Day 34（JSON 日志） | structlog；uvicorn stdout 看 JSON；端口 `8034` |
-| Day 35（故障演练） | 故障注入 + ES/Kibana；端口 `8035` / `19200` / `15601` |
-| Day 36–37（AutoGen） | AgentChat 0.7.x + Ollama；单助手 / RoundRobin 群聊 |
-| Day 38（AutoGen 实战） | 研究员–程序员–测试员三人 RoundRobin；Ollama |
-| Day 39–40（CrewAI） | `crewai[litellm]` + Ollama；Agent/Task/Crew/Process |
-| Day 41（CrewAI 实战） | 旅行规划师–向导–预订专员；sequential + Ollama |
-
-OpenRouter（可选）：在需要的 day 里 `cp .env.example .env` 填 `OPENROUTER_API_KEY`。
-
----
-
-## Quick Start（Day 1）
+**前置：** Python 3.12+ · [uv](https://docs.astral.sh/uv/) · [Ollama](https://ollama.com/)（先 `ollama pull qwen2:7b` 或任意 chat 模型）
 
 ```bash
 git clone https://github.com/moyunzero/agent-dev-practice.git
 cd agent-dev-practice/week01/day01-fastapi-hello
-
-cp .env.example .env    # 纯 Ollama 可不填 Key
-
+cp .env.example .env          # 纯 Ollama 可不填 Key
 uv run uvicorn main:app --reload --port 8000
 ```
 
-**另开终端验收：**
+另开终端：
 
 ```bash
 curl -s http://127.0.0.1:8000/health
-# {"status":"ok","service":"day01",...}
-
 curl -s http://127.0.0.1:8000/chat \
   -H 'Content-Type: application/json' \
   -d '{"prompt":"用一句话介绍 FastAPI","provider":"ollama","temperature":0}'
 ```
 
-浏览器打开 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) 可看 Swagger。
-
-**详细教程**：[notes/week01/day01-fastapi.md](notes/week01/day01-fastapi.md)
+Swagger：[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) · 教程：[Day1 长文](notes/week01/day01-fastapi.md)
 
 ---
 
-## 推荐体验路径
+## 推荐体验（先跑这 5 个建立体感）
 
-想快速感受「这仓库值不值得 Star」，建议按下面顺序试 3 个 demo：
-
-| 顺序 | Day | 你会看到什么 | 命令入口 |
-|:----:|-----|-------------|----------|
-| 1 | **Day 1** | 最小 FastAPI + Ollama 双后端 | [week01/day01-fastapi-hello](week01/day01-fastapi-hello/) |
-| 2 | **Day 5–6** | 第一个完整 **Naive RAG** `POST /ask` | [week01/day05-06-naive-rag](week01/day05-06-naive-rag/) |
-| 3 | **Day 21** | **研究助手 Agent**（本地 RAG + Web 搜索） | [week03/day21-research-assistant](week03/day21-research-assistant/) |
-
-Day 5–6 快速验收：
+| # | 体验 | 你会看到 | 入口 |
+|:-:|------|----------|------|
+| 1 | **最小 API** | FastAPI + Ollama | [Day1](week01/day01-fastapi-hello/) |
+| 2 | **Naive RAG** | `POST /ask` + sources | [Day5–6](week01/day05-06-naive-rag/) |
+| 3 | **研究助手** | RAG + Web 工具 Agent | [Day21](week03/day21-research-assistant/) |
+| 4 | **客服整栈** | Compose + Prom/Grafana + Locust | [Day48–51](week07/day48-51-customer-service-optimize/) |
+| 5 | **投研 Crew** | 三人 sequential + ≥5 工具 | [Day52–56](week07/day52-56-research-agent/) |
 
 ```bash
-cd week01/day05-06-naive-rag
-uv sync    # 首次较慢：Embedding 模型
+# Day 5–6 快速验收（首次 uv sync 会拉 Embedding，稍慢）
+cd week01/day05-06-naive-rag && uv sync
 uv run uvicorn main:app --reload --port 8002
-
 curl -s -X POST http://127.0.0.1:8002/ask \
   -H 'Content-Type: application/json' \
   -d '{"question":"chunk_overlap 是干什么的？"}'
-# 返回 answer + sources
 ```
+
+收官文档：[简历怎么写量化](notes/week07/day57-58-resume.md) · [系统设计怎么口述](notes/week07/day59-60-interview-mock.md)
 
 ---
 
-## 架构一览
-
-### 8 周能力栈（Mermaid）
+## 8 周你将走上的路
 
 ```mermaid
-flowchart TB
-  subgraph W1["Week 1 · API & Naive RAG"]
-    D1[Day1 FastAPI]
-    D2[Day2 LCEL]
-    D3[Day3 加载分块]
-    D4[Day4 Embedding]
-    D56[Day5-6 Naive RAG]
-    D7[Day7 Docker]
-    D1 --> D2 --> D3 --> D4 --> D56 --> D7
-  end
-
-  subgraph W2["Week 2 · Advanced RAG"]
-    D8[Day8 Query Transform]
-    D9[Day9 Hybrid+Rerank]
-    D1011[Day10-11 RAGAs]
-    D12[Day12 Milvus]
-    D14[Day14 系统升级]
-    D8 --> D9 --> D1011 --> D12 --> D14
-  end
-
-  subgraph W3["Week 3 · Agent"]
-    D15[Day15 ReAct]
-    D18[Day18 Function Calling]
-    D21[Day21 研究助手]
-    D15 --> D18 --> D21
-  end
-
-  subgraph W4["Week 4 · 性能"]
-    D23[Day23 Redis]
-    D2425[Day24-25 异步]
-    D28[Day28 压测]
-    D23 --> D2425 --> D28
-  end
-
-  W1 --> W2 --> W3 --> W4
+flowchart LR
+  A[Week1–2<br/>API + RAG] --> B[Week3–4<br/>Agent + 性能]
+  B --> C[Week5–6<br/>可观测 + Multi-Agent]
+  C --> D[Week7–8<br/>客服 / 投研 / 简历 / Mock]
 ```
 
-### Week 4 收官数据流（优化前后对照）
+| 周 | 主题 | 状态 | 结束时能演示 |
+|:--:|------|:----:|--------------|
+| 1 | FastAPI + Naive RAG | `available` | 文档问答 API + Docker |
+| 2 | Advanced RAG | `available` | Hybrid / Milvus / RAGAs |
+| 3 | Agent + Tools | `available` | 研究助手（含重试降级） |
+| 4 | 性能 | `available` | Redis · 异步 · 压测 |
+| 5 | 可观测与部署 | `available` | Trace · Prom · Grafana · 故障演练 → [week05](week05/README.md) |
+| 6 | Multi-Agent | `available` | AutoGen + CrewAI → [week06](week06/README.md) |
+| 7–8 | 工业项目 + 面试 | `available` | 客服 · 投研 · 简历 · Mock → [week07](week07/README.md) |
 
-```mermaid
-sequenceDiagram
-  participant C as Client
-  participant API as FastAPI
-  participant R as Redis
-  participant L as Ollama
-
-  C->>API: POST /async-ask
-  API->>R: cache lookup
-  alt cache hit
-    R-->>API: cached answer
-  else cache miss
-    API->>L: async LLM call
-    L-->>API: answer
-    API->>R: store
-  end
-  API-->>C: JSON response
-```
-
-Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异步 + 缓存的收益。
+落地细则：[docs/ROADMAP.md](docs/ROADMAP.md)
 
 ---
 
-## 8 周 Roadmap
+## 关键特性
 
-| 周 | 主题 | 状态 | 本周结束时应能演示 |
-|:--:|------|:----:|-------------------|
-| 1 | FastAPI + LangChain + Naive RAG | `available` | 文档问答 API + Docker |
-| 2 | Advanced RAG + 向量库 + 评估 | `available` | Hybrid + Rerank + Milvus + RAGAs |
-| 3 | Agent + Tool Calling | `available` | 带工具的研究助手（含重试/降级） |
-| 4 | 性能优化 | `available` | Redis 缓存、异步、批处理、压测 |
-| 5 | 可观测与部署 | `available` | Trace + 监控 + Compose + JSON 日志 + 故障演练 → [week05/README.md](week05/README.md) |
-| 6 | Multi-Agent | `available` | AutoGen（Day36–38）+ CrewAI（Day39–41）+ 对比（Day42）→ [week06/README.md](week06/README.md) |
-| 7–8 | 工业项目 | `available` | Day43–60 客服/投研/简历/面试 Mock → [week07/README.md](week07/README.md) |
-
-完整每日拆解：[docs/ROADMAP.md](docs/ROADMAP.md)
+- **一天一目录**：多数 day 自带 `pyproject.toml` / `uv.lock`，不必一次装全仓
+- **验收可抄**：README 写清文件说明、推荐顺序、curl / compose 命令
+- **本地优先**：默认 Ollama；工业项目里付费 Search/SEC 可用 fixture 顶上
+- **长文自洽**：[`notes/`](notes/) 名词表 + 代码 + 坑 + 边界，可单独转发
+- **对齐上游**：目标不缩水，跟 [AgentGuide 开发岗路线](https://github.com/adongwanai/AgentGuide/blob/main/docs/05-roadmaps/learning-roadmap-development.md)
 
 ---
 
-## Day 1–60 完整索引
+## Tech Stack
 
-| Day | 主题 | 代码目录 | 教程 |
-|:---:|------|----------|------|
-| 1 | FastAPI 最小 API | [day01-fastapi-hello](week01/day01-fastapi-hello/) | [📖](notes/week01/day01-fastapi.md) |
-| 2 | LangChain LCEL + Memory | [day02-langchain-lcel](week01/day02-langchain-lcel/) | [📖](notes/week01/day02-langchain-lcel.md) |
-| 3 | 文档加载 + 分块 | [day03-rag-load-split](week01/day03-rag-load-split/) | [📖](notes/week01/day03-rag-load-split.md) |
-| 4 | Embedding + Chroma | [day04-rag-embed-store](week01/day04-rag-embed-store/) | [📖](notes/week01/day04-rag-embed-store.md) |
-| 5–6 | Naive RAG API | [day05-06-naive-rag](week01/day05-06-naive-rag/) | [📖](notes/week01/day05-06-naive-rag.md) |
-| 7 | Docker 打包 | [day07-docker](week01/day07-docker/) | [📖](notes/week01/day07-docker.md) |
-| 8 | Query Transformation | [day08-query-transform](week02/day08-query-transform/) | [📖](notes/week02/day08-query-transform.md) |
-| 9 | 混合检索 + Rerank | [day09-hybrid-rerank](week02/day09-hybrid-rerank/) | [📖](notes/week02/day09-hybrid-rerank.md) |
-| 10–11 | RAGAs 评估 | [day10-11-ragas-eval](week02/day10-11-ragas-eval/) | [📖](notes/week02/day10-11-ragas-eval.md) |
-| 12 | Milvus 向量库 | [day12-milvus](week02/day12-milvus/) | [📖](notes/week02/day12-milvus.md) |
-| 13 | 复杂 PDF / Unstructured | [day13-unstructured-pdf](week02/day13-unstructured-pdf/) | [📖](notes/week02/day13-unstructured-pdf.md) |
-| 14 | 周度 RAG 升级 | [day14-rag-upgrade](week02/day14-rag-upgrade/) | [📖](notes/week02/day14-rag-upgrade.md) |
-| 15 | ReAct Agent | [day15-react-agent](week03/day15-react-agent/) | [📖](notes/week03/day15-react-agent.md) |
-| 16 | 自定义天气工具 | [day16-custom-weather-tool](week03/day16-custom-weather-tool/) | [📖](notes/week03/day16-custom-weather-tool.md) |
-| 17 | SQL Agent | [day17-sql-agent](week03/day17-sql-agent/) | [📖](notes/week03/day17-sql-agent.md) |
-| 18 | Function Calling | [day18-function-calling](week03/day18-function-calling/) | [📖](notes/week03/day18-function-calling.md) |
-| 19 | Agent Memory | [day19-agent-memory](week03/day19-agent-memory/) | [📖](notes/week03/day19-agent-memory.md) |
-| 20 | Agent 错误处理 | [day20-agent-error-handling](week03/day20-agent-error-handling/) | [📖](notes/week03/day20-agent-error-handling.md) |
-| 21 | 研究助手 Agent | [day21-research-assistant](week03/day21-research-assistant/) | [📖](notes/week03/day21-research-assistant.md) |
-| 22 | 性能画像 cProfile/py-spy | [day22-perf-profile](week04/day22-perf-profile/) | [📖](notes/week04/day22-perf-profile.md) |
-| 23 | Redis 缓存 | [day23-redis-cache](week04/day23-redis-cache/) | [📖](notes/week04/day23-redis-cache.md) |
-| 24–25 | 异步处理 | [day24-25-async](week04/day24-25-async/) | [📖](notes/week04/day24-25-async.md) |
-| 26 | 批处理优化 | [day26-batching](week04/day26-batching/) | [📖](notes/week04/day26-batching.md) |
-| 27 | vLLM-Metal 推理 | [day27-vllm](week04/day27-vllm/) | [📖](notes/week04/day27-vllm.md) |
-| 28 | Locust + JMeter 压测 | [day28-load-test](week04/day28-load-test/) | [📖](notes/week04/day28-load-test.md) |
-| 29 | LangSmith 链路追踪 | [day29-tracing](week05/day29-tracing/) | [📖](notes/week05/day29-tracing.md) |
-| 30 | Prometheus 指标 | [day30-prometheus](week05/day30-prometheus/) | [📖](notes/week05/day30-prometheus.md) |
-| 31 | Grafana 大盘 | [day31-grafana](week05/day31-grafana/) | [📖](notes/week05/day31-grafana.md) |
-| 32 | FastAPI Dockerfile | [day32-docker](week05/day32-docker/) | [📖](notes/week05/day32-docker.md) |
-| 33 | Compose FastAPI+Redis | [day33-compose](week05/day33-compose/) | [📖](notes/week05/day33-compose.md) |
-| 34 | JSON 结构化日志 | [day34-logging](week05/day34-logging/) | [📖](notes/week05/day34-logging.md) |
-| 35 | 故障模拟 + ES/Kibana | [day35-incident](week05/day35-incident/) | [📖](notes/week05/day35-incident.md) |
-| 36–37 | AutoGen AgentChat 核心 | [day36-37-autogen-core](week06/day36-37-autogen-core/) | [📖](notes/week06/day36-37-autogen-core.md) |
-| 38 | AutoGen 三人协作实战 | [day38-autogen-team](week06/day38-autogen-team/) | [📖](notes/week06/day38-autogen-team.md) |
-| 39–40 | CrewAI 核心概念 | [day39-40-crewai-core](week06/day39-40-crewai-core/) | [📖](notes/week06/day39-40-crewai-core.md) |
-| 41 | CrewAI 旅行三人实战 | [day41-crewai-travel](week06/day41-crewai-travel/) | [📖](notes/week06/day41-crewai-travel.md) |
-| 42 | AutoGen vs CrewAI 对比 | [day42-framework-compare](week06/day42-framework-compare/) | [📖](notes/week06/day42-framework-compare.md) |
-| 43–47 | 智能客服 RAG 核心 | [day43-47-customer-service-rag](week07/day43-47-customer-service-rag/) | [📖](notes/week07/day43-47-customer-service-rag.md) |
-| 48–51 | 智能客服优化与部署 | [day48-51-customer-service-optimize](week07/day48-51-customer-service-optimize/) | [📖](notes/week07/day48-51-customer-service-optimize.md) |
-| 52–56 | 自动化投研 Agent | [day52-56-research-agent](week07/day52-56-research-agent/) | [📖](notes/week07/day52-56-research-agent.md) |
-| 57–58 | 简历撰写与项目总结 | [day57-58-resume](week07/day57-58-resume/) | [📖](notes/week07/day57-58-resume.md) |
-| 59–60 | 系统设计与面试 Mock | [day59-60-interview-mock](week07/day59-60-interview-mock/) | [📖](notes/week07/day59-60-interview-mock.md) |
+Python 3.12 · uv · FastAPI · LangChain / LangGraph · Chroma / Milvus · PostgreSQL · Ollama · Redis · AutoGen AgentChat · CrewAI · Prometheus / Grafana · Locust · Docker Compose · RAGAs · LangSmith（可选）
 
 ---
 
-## 各 Day 依赖与耗时
+## 适合谁 / 不适合谁
 
-| 类型 | 涉及 Day | 说明 |
-|------|----------|------|
-| 仅 Ollama | 1–11, 15–20, 22, 26, 36–41 | 最轻；确保 `ollama serve` + 已 pull 模型 |
-| 首次 sync 较慢 | 4, 5–6, 8–11, 14 | sentence-transformers / torch；磁盘预留 **~2GB** |
-| 需要 Docker | 12, 14, 23, 31–33, 35 | Milvus / Redis / Grafana / 自建镜像 / Compose / ES+Kibana |
-| 需要网络 | 16, 21 | Open-Meteo / DuckDuckGo；无网有兜底 env |
-| Apple Silicon 专项 | 27 | vLLM-Metal + mlx 模型 |
-| 压测工具 | 28 | Locust 内置；JMeter 可选下载 |
-| LangSmith 账号 | 29 | API Key + 环境变量；复用 Day21 Agent |
-| Prometheus 文本指标 | 30 | Instrumentator + `/metrics`；无需本机 Prometheus Server |
-| Grafana 大盘 | 31 | Compose 端口 19090/13031；依赖 Day30 `:8030` |
-| 自建 Dockerfile | 32 | `docker build -t day32-fastapi`；`-p 8032:8000` |
-| Compose 多服务 | 33 | `docker compose up`；API `:8033` + Redis |
-| JSON 结构化日志 | 34 | structlog + FastAPI 中间件；端口 `8034`；stdout / `jq` |
-| 故障演练 + 最小 ES/Kibana | 35 | `FAULT` 注入；Compose ES+Kibana；端口 `8035` / `19200` / `15601` |
-| AutoGen AgentChat | 36–38 | `autogen-agentchat` + `autogen-ext[ollama]`；需本机 Ollama |
-| CrewAI | 39–41 | `crewai[litellm]`；`LLM(model="ollama/...", base_url=...)` |
-| 笔记对照 | 42 | 无新依赖；对照 Day36–41 做选型 |
-| Postgres + FastAPI | 43–47 | Docker Postgres；`psycopg`；FAQ 文档回退（本块仅库 Compose） |
-| Compose 整栈 + 压测 | 48–51 | API+PG+Prom+Grafana；Locust；端口见 day README |
-| CrewAI 投研小队 | 52–56 | `crewai[litellm]` + tenacity；本机 Ollama；工具默认 fixture（无付费 Key） |
-| 简历文档日 | 57–58 | 无新依赖；产出 `resume_projects.md` 可粘贴块 |
-| 面试口述日 | 59–60 | 无新依赖；四步骨架 + Mock 复盘 |
+**适合**
 
-每个 day 目录 README 含**文件说明**与**推荐顺序**，可独立跟练；想深入原理再看 `notes/` 长文。
+- 有一点 Python，想按工程顺序把 Agent / RAG 跑通
+- 在跟 AgentGuide，缺「配套代码 + 教程」
+- 求职需要**可量化项目经历**和**系统设计口述**
+
+**不太适合**
+
+- 要开箱 SaaS → 看 [Dify](https://github.com/langgenius/dify) / [RAGFlow](https://github.com/infiniflow/ragflow)
+- 零编程基础 → 先补 Python
+
+---
+
+## 环境与依赖（摘要）
+
+| 层级 | 需要什么 |
+|------|----------|
+| 几乎所有 day | Python 3.12+ · uv · Ollama |
+| Embedding 日（Day4+） | 首次 sync 拉 torch，约 5–15 分钟，磁盘预留 ~2GB |
+| 向量库 / 缓存 / 监控 | Docker Desktop（Milvus、Redis、Grafana、客服整栈等） |
+| 工业客服 Day48–51 | Compose：API + Postgres + Prom + Grafana；Locust |
+| 投研 Day52–56 | CrewAI + Ollama；默认 fixture，无付费 Key |
+
+某天要 Docker / 端口 / Key，以**该 day 的 README**为准。
 
 ---
 
@@ -334,64 +153,113 @@ Day 28 用 Locust/JMeter 对比 `/async-ask` vs `/async-block`，直观看到异
 
 ```text
 agent-dev-practice/
-├── week01/ … week07/       # Day 1–60 练习（8 周主线 available）
-├── notes/                  # 对外教程 + concepts/ + week05/assets 截图
-├── docs/
-│   └── ROADMAP.md          # 8 周路线落地说明（公开）
+├── week01/ … week06/   # 基础 → RAG → Agent → 性能 → 可观测 → Multi-Agent
+├── week07/             # Week 7–8：客服 / 投研 / 简历 / 面试 Mock
+├── notes/              # 对外长文（按周）
+├── docs/ROADMAP.md     # 8 周落地说明
 ├── CONTRIBUTING.md
-├── LICENSE
 └── README.md
 ```
 
-**Tech Stack：** FastAPI · LangChain · LangGraph · Chroma / Milvus · Ollama · Redis · vLLM-Metal · Locust / JMeter · LangSmith · Prometheus · Grafana · RAGAs · Unstructured · AutoGen AgentChat · CrewAI
+---
+
+## Day 1–60 完整索引
+
+| Day | 主题 | 代码 | 教程 |
+|:---:|------|------|------|
+| 1 | FastAPI 最小 API | [day01](week01/day01-fastapi-hello/) | [📖](notes/week01/day01-fastapi.md) |
+| 2 | LangChain LCEL + Memory | [day02](week01/day02-langchain-lcel/) | [📖](notes/week01/day02-langchain-lcel.md) |
+| 3 | 文档加载 + 分块 | [day03](week01/day03-rag-load-split/) | [📖](notes/week01/day03-rag-load-split.md) |
+| 4 | Embedding + Chroma | [day04](week01/day04-rag-embed-store/) | [📖](notes/week01/day04-rag-embed-store.md) |
+| 5–6 | Naive RAG API | [day05-06](week01/day05-06-naive-rag/) | [📖](notes/week01/day05-06-naive-rag.md) |
+| 7 | Docker 打包 | [day07](week01/day07-docker/) | [📖](notes/week01/day07-docker.md) |
+| 8 | Query Transformation | [day08](week02/day08-query-transform/) | [📖](notes/week02/day08-query-transform.md) |
+| 9 | 混合检索 + Rerank | [day09](week02/day09-hybrid-rerank/) | [📖](notes/week02/day09-hybrid-rerank.md) |
+| 10–11 | RAGAs 评估 | [day10-11](week02/day10-11-ragas-eval/) | [📖](notes/week02/day10-11-ragas-eval.md) |
+| 12 | Milvus | [day12](week02/day12-milvus/) | [📖](notes/week02/day12-milvus.md) |
+| 13 | 复杂 PDF | [day13](week02/day13-unstructured-pdf/) | [📖](notes/week02/day13-unstructured-pdf.md) |
+| 14 | 周度 RAG 升级 | [day14](week02/day14-rag-upgrade/) | [📖](notes/week02/day14-rag-upgrade.md) |
+| 15 | ReAct Agent | [day15](week03/day15-react-agent/) | [📖](notes/week03/day15-react-agent.md) |
+| 16 | 自定义天气工具 | [day16](week03/day16-custom-weather-tool/) | [📖](notes/week03/day16-custom-weather-tool.md) |
+| 17 | SQL Agent | [day17](week03/day17-sql-agent/) | [📖](notes/week03/day17-sql-agent.md) |
+| 18 | Function Calling | [day18](week03/day18-function-calling/) | [📖](notes/week03/day18-function-calling.md) |
+| 19 | Agent Memory | [day19](week03/day19-agent-memory/) | [📖](notes/week03/day19-agent-memory.md) |
+| 20 | Agent 错误处理 | [day20](week03/day20-agent-error-handling/) | [📖](notes/week03/day20-agent-error-handling.md) |
+| 21 | 研究助手 Agent | [day21](week03/day21-research-assistant/) | [📖](notes/week03/day21-research-assistant.md) |
+| 22 | 性能画像 | [day22](week04/day22-perf-profile/) | [📖](notes/week04/day22-perf-profile.md) |
+| 23 | Redis 缓存 | [day23](week04/day23-redis-cache/) | [📖](notes/week04/day23-redis-cache.md) |
+| 24–25 | 异步处理 | [day24-25](week04/day24-25-async/) | [📖](notes/week04/day24-25-async.md) |
+| 26 | 批处理 | [day26](week04/day26-batching/) | [📖](notes/week04/day26-batching.md) |
+| 27 | vLLM-Metal | [day27](week04/day27-vllm/) | [📖](notes/week04/day27-vllm.md) |
+| 28 | Locust / JMeter | [day28](week04/day28-load-test/) | [📖](notes/week04/day28-load-test.md) |
+| 29 | LangSmith | [day29](week05/day29-tracing/) | [📖](notes/week05/day29-tracing.md) |
+| 30 | Prometheus | [day30](week05/day30-prometheus/) | [📖](notes/week05/day30-prometheus.md) |
+| 31 | Grafana | [day31](week05/day31-grafana/) | [📖](notes/week05/day31-grafana.md) |
+| 32 | Dockerfile | [day32](week05/day32-docker/) | [📖](notes/week05/day32-docker.md) |
+| 33 | Compose + Redis | [day33](week05/day33-compose/) | [📖](notes/week05/day33-compose.md) |
+| 34 | JSON 日志 | [day34](week05/day34-logging/) | [📖](notes/week05/day34-logging.md) |
+| 35 | 故障演练 | [day35](week05/day35-incident/) | [📖](notes/week05/day35-incident.md) |
+| 36–37 | AutoGen 核心 | [day36-37](week06/day36-37-autogen-core/) | [📖](notes/week06/day36-37-autogen-core.md) |
+| 38 | AutoGen 三人实战 | [day38](week06/day38-autogen-team/) | [📖](notes/week06/day38-autogen-team.md) |
+| 39–40 | CrewAI 核心 | [day39-40](week06/day39-40-crewai-core/) | [📖](notes/week06/day39-40-crewai-core.md) |
+| 41 | CrewAI 旅行实战 | [day41](week06/day41-crewai-travel/) | [📖](notes/week06/day41-crewai-travel.md) |
+| 42 | 框架对比 | [day42](week06/day42-framework-compare/) | [📖](notes/week06/day42-framework-compare.md) |
+| 43–47 | 智能客服 RAG | [day43-47](week07/day43-47-customer-service-rag/) | [📖](notes/week07/day43-47-customer-service-rag.md) |
+| 48–51 | 客服优化与部署 | [day48-51](week07/day48-51-customer-service-optimize/) | [📖](notes/week07/day48-51-customer-service-optimize.md) |
+| 52–56 | 投研 Agent | [day52-56](week07/day52-56-research-agent/) | [📖](notes/week07/day52-56-research-agent.md) |
+| 57–58 | 简历与项目总结 | [day57-58](week07/day57-58-resume/) | [📖](notes/week07/day57-58-resume.md) |
+| 59–60 | 系统设计 Mock | [day59-60](week07/day59-60-interview-mock/) | [📖](notes/week07/day59-60-interview-mock.md) |
 
 ---
 
-## 常见问题
+## FAQ
 
 <details>
-<summary><strong>Q: 必须按 Day 1→28 顺序吗？</strong></summary>
+<summary><strong>为什么是 8 周，文件夹却只有 week01–week07？</strong></summary>
 
-建议跟路线顺序。Day 5–6 依赖 Day 3–4 的概念；Day 14 依赖 Milvus + Hybrid。跳关前先看该 day README 的「前置」。
+上游第 7–8 周是一块（工业项目 + 面试）。本仓放在 [`week07/`](week07/README.md)，不另建空的 `week08/`。
 </details>
 
 <details>
-<summary><strong>Q: 没有 NVIDIA GPU 能跟完吗？</strong></summary>
+<summary><strong>必须按 Day 1→60 顺序吗？</strong></summary>
 
-可以。默认 Ollama 本地 CPU/GPU（Apple Silicon 可用 Metal）；Day 27 vLLM 走 vLLM-Metal 路径，非 CUDA 官方 vLLM。
+建议按序。跳关前看该 day README「前置」。工业项目默认你已有 RAG / Agent 直觉。
 </details>
 
 <details>
-<summary><strong>Q: <code>uv sync</code> 很慢或 OOM？</strong></summary>
+<summary><strong>没有 NVIDIA GPU 能跟完吗？</strong></summary>
 
-Day 4+ 会装 torch。关闭其它占内存程序；或只 clone 单个 day 目录。学完可删 `.venv`，回看时再 `uv sync`。
+可以。默认 Ollama（CPU / Apple Metal）。Day27 走 vLLM-Metal，不是 CUDA 官方 vLLM。
 </details>
 
 <details>
-<summary><strong>Q: 和 AgentGuide 是什么关系？</strong></summary>
+<summary><strong><code>uv sync</code> 很慢或 OOM？</strong></summary>
 
-本仓是 [AgentGuide 开发岗 8 周路线](https://github.com/adongwanai/AgentGuide/blob/main/docs/05-roadmaps/learning-roadmap-development.md) 的**动手配套**，不替代 AgentGuide 的面试与知识地图。建议两个 Star ⭐ 一起用。
+Day4+ 会装 torch。关其它占内存程序，或只进单个 day 目录 sync。学完可删 `.venv`。
 </details>
 
 <details>
-<summary><strong>Q: Week 5+ 什么时候更新？</strong></summary>
+<summary><strong>8 周主线更新完了吗？</strong></summary>
 
-Week 5–8 主线 Day 1–60 均已 available（含 Week7–8 工业项目与面试 Mock），见 [week07/README.md](week07/README.md)。
+是。**Day 1–60 全部 `available`。**
 </details>
 
 ---
 
-## 贡献与反馈
+## 贡献
 
-- 某个 day **跑不通**、步骤不清楚 → [提 Issue](https://github.com/moyunzero/agent-dev-practice/issues/new/choose)（请写明 Day 编号与环境）
-- 改进教程或代码 → 见 [CONTRIBUTING.md](CONTRIBUTING.md)
-- 觉得有帮助 → **Star ⭐** 方便下次找到，Watch 可收到新 day 推送
+- 跑不通 → [提 Issue](https://github.com/moyunzero/agent-dev-practice/issues/new/choose)（写明 Day + 环境）
+- 改教程/代码 → [CONTRIBUTING.md](CONTRIBUTING.md)
+
+觉得有用可以给本仓和 [AgentGuide](https://github.com/adongwanai/AgentGuide) 点个 Star，方便以后找回。
+
+**建议路径：** 跑通上方体验 #1–#3 → 冲 Week7–8 两个工业项目 → 写进简历。
 
 ---
 
 ## Acknowledgments
 
-- 路线来源：[AgentGuide · 开发岗 8 周计划](https://github.com/adongwanai/AgentGuide/blob/main/docs/05-roadmaps/learning-roadmap-development.md)（[@adongwanai](https://github.com/adongwanai)）
+路线来源：[AgentGuide · 开发岗 8 周计划](https://github.com/adongwanai/AgentGuide/blob/main/docs/05-roadmaps/learning-roadmap-development.md)（[@adongwanai](https://github.com/adongwanai)）
 
 ## License
 

@@ -31,9 +31,11 @@
 | 4 | 性能优化 | Redis 缓存、异步、批处理、压测指标 |
 | 5 | 可观测与部署 | Trace + Prometheus/Grafana 思路 + Compose 一键起 |
 | 6 | Multi-Agent | AutoGen / CrewAI（或现役等价）各一协作 Demo |
-| 7–8 | 工业项目 + 面试 | 智能客服 RAG + 投研 Multi-Agent；简历量化表述 |
+| 7–8 | 工业项目 + 面试 | 智能客服 RAG + 投研 Multi-Agent；简历量化；系统设计 Mock |
 
-细节以原文周计划为准；下面把 **第 1 周按天拆到可执行**，并写明本仓扩展边界。
+> **目录说明**：第 7–8 周内容全部落在 [`week07/`](../week07/README.md)（上游合成一块；本仓不另建 `week08/`）。状态：Day43–60 **available**。
+
+细节以原文周计划为准；下面按天拆到可执行，并写明本仓扩展边界。
 
 ---
 
