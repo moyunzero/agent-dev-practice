@@ -516,17 +516,28 @@
 | 文章 | [notes/week07/day57-58-resume.md](../notes/week07/day57-58-resume.md) |
 | 代码 | [week07/day57-58-resume](../week07/day57-58-resume/) |
 
+### Day 59–60 — 系统设计与面试 Mock ✅
+
+| | |
+|--|--|
+| 状态 | **available** |
+| 强制 | 准备高频系统设计题，并进行 1v1 模拟面试 |
+| 本仓串联 | 四步骨架；客服/投研两案例；性能·故障·幻觉追问；Mock 复盘改澄清 |
+| 验收 | 能口述四步；两案例可讲；≥1 场 Mock + `mock_debrief.md` |
+| 文章 | [notes/week07/day59-60-interview-mock.md](../notes/week07/day59-60-interview-mock.md) |
+| 代码 | [week07/day59-60-interview-mock](../week07/day59-60-interview-mock/) |
+
 ---
 
 ## 5. 第 6–8 周
 
-Week 1–6 已发布（Day1–42 available）；Week 7 进行中（Day43–58 available；下一块 Day59–60）。
+Week 1–6 已发布（Day1–42 available）；Week 7–8 工业项目轨 **Day43–60 available**。
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
 | 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
 | 6 | `available` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–42：AgentChat + CrewAI + 对比；见 [week06/README.md](../week06/README.md) |
-| 7–8 | `in_progress` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 | Day43–58 已发布；59–60 Mock；见 [week07/README.md](../week07/README.md) |
+| 7–8 | `available` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 Mock | Day43–60 已发布；见 [week07/README.md](../week07/README.md) |
 
 ---
 
