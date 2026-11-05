@@ -9,7 +9,7 @@ assignees: ''
 ## Day 信息
 
 - **Week / Day**：（例如 Week 2 / Day 12）
-- **目录路径**：（例如 `week02/day12-milvus/`）
+- **目录路径**：（例如 `tracks/agentguide/week02/day12-milvus/`）
 - **教程链接**：（如有，例如 `notes/week02/day12-milvus.md`）
 
 ## 环境

@@ -33,7 +33,7 @@
 | 6 | Multi-Agent | AutoGen / CrewAI（或现役等价）各一协作 Demo |
 | 7–8 | 工业项目 + 面试 | 智能客服 RAG + 投研 Multi-Agent；简历量化；系统设计 Mock |
 
-> **目录说明**：第 7–8 周内容全部落在 [`week07/`](../week07/README.md)（上游合成一块；本仓不另建 `week08/`）。状态：Day43–60 **available**。
+> **目录说明**：第 7–8 周内容全部落在 [`tracks/agentguide/week07/`](../tracks/agentguide/week07/README.md)（上游合成一块；本仓不另建 `week08/`）。状态：Day43–60 **available**。
 
 细节以原文周计划为准；下面按天拆到可执行，并写明本仓扩展边界。
 
@@ -49,7 +49,7 @@
 | 强制 | 路由；path / query / body；可运行 Hello API |
 | 本仓扩展 | Ollama + OpenRouter；Pydantic 校验 `temperature` |
 | 文章 | [notes/week01/day01-fastapi.md](../notes/week01/day01-fastapi.md) |
-| 代码 | `week01/day01-fastapi-hello/` |
+| 代码 | `tracks/agentguide/week01/day01-fastapi-hello/` |
 
 ### Day 2 — LangChain 核心 + LCEL **available**
 
@@ -95,7 +95,7 @@
 
 | | |
 |--|--|
-| 练习目录 | `week01/day02-langchain-lcel/` |
+| 练习目录 | `tracks/agentguide/week01/day02-langchain-lcel/` |
 | 文章产出 | `notes/week01/day02-langchain-lcel.md`（零基础自洽；六大模块都要写进正文，不能只写 LCEL） |
 
 **Day 2 建议课时结构（确认后执行）**
@@ -351,7 +351,7 @@
 | 本仓串联 | **路径 A-LangSmith**：环境变量接到 Day21 研究助手；Trace 树读模型/工具延迟与错误 |
 | 验收 | Projects 出现完整 Run；能指着树讲清慢在哪；掌握检查；对外文章 |
 | 文章 | [notes/week05/day29-tracing.md](../notes/week05/day29-tracing.md) |
-| 代码 | [week05/day29-tracing](../week05/day29-tracing/) |
+| 代码 | [tracks/agentguide/week05/day29-tracing](../tracks/agentguide/week05/day29-tracing/) |
 
 ### Day 30 — 指标监控 (Prometheus) ✅
 
@@ -362,7 +362,7 @@
 | 本仓串联 | FastAPI + Instrumentator `/metrics`；自定义 `cache_lookups_total` hit/miss |
 | 验收 | curl 见 requests / duration / cache Counter；掌握检查；对外文章 |
 | 文章 | [notes/week05/day30-prometheus.md](../notes/week05/day30-prometheus.md) |
-| 代码 | [week05/day30-prometheus](../week05/day30-prometheus/) |
+| 代码 | [tracks/agentguide/week05/day30-prometheus](../tracks/agentguide/week05/day30-prometheus/) |
 
 ### Day 31 — 可视化 (Grafana) ✅
 
@@ -373,7 +373,7 @@
 | 本仓串联 | Compose Grafana+Prometheus；刮取 Day30；预置 4 Panel 大盘（含实拍） |
 | 验收 | targets UP；Explore 有曲线；大盘可读；掌握检查；对外文章 |
 | 文章 | [notes/week05/day31-grafana.md](../notes/week05/day31-grafana.md) |
-| 代码 | [week05/day31-grafana](../week05/day31-grafana/) |
+| 代码 | [tracks/agentguide/week05/day31-grafana](../tracks/agentguide/week05/day31-grafana/) |
 
 ### Day 32 — 容器化 (Docker) ✅
 
@@ -384,7 +384,7 @@
 | 本仓串联 | Dockerfile + `day32-fastapi` 镜像；`-p 8032:8000`；含 `/metrics` |
 | 验收 | build 成功；curl health/ask/metrics；掌握检查；对外文章 |
 | 文章 | [notes/week05/day32-docker.md](../notes/week05/day32-docker.md) |
-| 代码 | [week05/day32-docker](../week05/day32-docker/) |
+| 代码 | [tracks/agentguide/week05/day32-docker](../tracks/agentguide/week05/day32-docker/) |
 
 ### Day 33 — 服务编排 (Docker Compose) ✅
 
@@ -395,7 +395,7 @@
 | 本仓串联 | FastAPI + Redis；服务名 DNS；health + miss→hit 验收（Milvus 可选） |
 | 验收 | `compose up`；`/health` redis:true；掌握检查；对外文章 |
 | 文章 | [notes/week05/day33-compose.md](../notes/week05/day33-compose.md) |
-| 代码 | [week05/day33-compose](../week05/day33-compose/) |
+| 代码 | [tracks/agentguide/week05/day33-compose](../tracks/agentguide/week05/day33-compose/) |
 
 ### Day 34 — 日志系统 (JSON) ✅
 
@@ -406,7 +406,7 @@
 | 本仓串联 | FastAPI + structlog `JSONRenderer`；请求中间件；端口 `8034`（不强制本机 ELK） |
 | 验收 | stdout 一行 JSON；含 `event`/`path`/`status`/`duration_ms`；掌握检查；对外文章 |
 | 文章 | [notes/week05/day34-logging.md](../notes/week05/day34-logging.md) |
-| 代码 | [week05/day34-logging](../week05/day34-logging/) |
+| 代码 | [tracks/agentguide/week05/day34-logging](../tracks/agentguide/week05/day34-logging/) |
 
 ### Day 35 — 周度总结与生产环境模拟 ✅
 
@@ -417,7 +417,7 @@
 | 本仓串联 | `FAULT=slow|error` 注入；JSON 字段交叉定位；加码 A：ES+Kibana（19200/15601） |
 | 验收 | slow/error 可复现；Kibana `status:500`/`fault:slow`；掌握检查；对外文章 |
 | 文章 | [notes/week05/day35-incident.md](../notes/week05/day35-incident.md) |
-| 代码 | [week05/day35-incident](../week05/day35-incident/) |
+| 代码 | [tracks/agentguide/week05/day35-incident](../tracks/agentguide/week05/day35-incident/) |
 
 ### Day 36–37 — AutoGen 核心概念 ✅
 
@@ -428,7 +428,7 @@
 | 本仓串联 | 现役 AgentChat 0.7.x：`AssistantAgent` + `RoundRobinGroupChat`；`autogen-agentchat` + `autogen-ext[ollama]`；Ollama |
 | 验收 | 单助手 `run`；双助手轮转见 `writer`/`critic`；掌握检查；对外文章 |
 | 文章 | [notes/week06/day36-37-autogen-core.md](../notes/week06/day36-37-autogen-core.md) |
-| 代码 | [week06/day36-37-autogen-core](../week06/day36-37-autogen-core/) |
+| 代码 | [tracks/agentguide/week06/day36-37-autogen-core](../tracks/agentguide/week06/day36-37-autogen-core/) |
 
 ### Day 38 — AutoGen 实战 ✅
 
@@ -439,7 +439,7 @@
 | 本仓串联 | 三 `AssistantAgent` + `RoundRobinGroupChat`；Ollama；短任务演示协作 |
 | 验收 | 终端见 researcher/coder/tester 交替；掌握检查；对外文章 |
 | 文章 | [notes/week06/day38-autogen-team.md](../notes/week06/day38-autogen-team.md) |
-| 代码 | [week06/day38-autogen-team](../week06/day38-autogen-team/) |
+| 代码 | [tracks/agentguide/week06/day38-autogen-team](../tracks/agentguide/week06/day38-autogen-team/) |
 
 ### Day 39–40 — CrewAI 核心概念 ✅
 
@@ -450,7 +450,7 @@
 | 本仓串联 | `crewai[litellm]==1.15.20`；`LLM(ollama/...)` + sequential 双 Agent Crew |
 | 验收 | `kickoff` 先研究后写；掌握检查；对外文章 |
 | 文章 | [notes/week06/day39-40-crewai-core.md](../notes/week06/day39-40-crewai-core.md) |
-| 代码 | [week06/day39-40-crewai-core](../week06/day39-40-crewai-core/) |
+| 代码 | [tracks/agentguide/week06/day39-40-crewai-core](../tracks/agentguide/week06/day39-40-crewai-core/) |
 
 ### Day 41 — CrewAI 实战 ✅
 
@@ -461,7 +461,7 @@
 | 本仓串联 | 三 Agent + 三 Task sequential；`context` 接力；Ollama；不真订票 |
 | 验收 | `kickoff` 见 planner→guide→booker；掌握检查；对外文章 |
 | 文章 | [notes/week06/day41-crewai-travel.md](../notes/week06/day41-crewai-travel.md) |
-| 代码 | [week06/day41-crewai-travel](../week06/day41-crewai-travel/) |
+| 代码 | [tracks/agentguide/week06/day41-crewai-travel](../tracks/agentguide/week06/day41-crewai-travel/) |
 
 ### Day 42 — 框架对比与总结 ✅
 
@@ -472,7 +472,7 @@
 | 本仓串联 | 「开会 vs 流水线」对照 Day36–41；其它框架只扫名；无新脚本 |
 | 验收 | 口述哲学 / 优缺 / 场景选型；对外文章 |
 | 文章 | [notes/week06/day42-framework-compare.md](../notes/week06/day42-framework-compare.md) |
-| 代码 | [week06/day42-framework-compare](../week06/day42-framework-compare/) |
+| 代码 | [tracks/agentguide/week06/day42-framework-compare](../tracks/agentguide/week06/day42-framework-compare/) |
 
 ### Day 43–47 — 项目一：智能客服 RAG（核心） ✅
 
@@ -483,7 +483,7 @@
 | 本仓串联 | 先库后 FAQ；FastAPI `POST /ask`；Postgres + FAQ 文档；压测/监控/整栈 Compose → Day48–51 |
 | 验收 | db / faq / need_human 三条路径；掌握检查；对外文章 |
 | 文章 | [notes/week07/day43-47-customer-service-rag.md](../notes/week07/day43-47-customer-service-rag.md) |
-| 代码 | [week07/day43-47-customer-service-rag](../week07/day43-47-customer-service-rag/) |
+| 代码 | [tracks/agentguide/week07/day43-47-customer-service-rag](../tracks/agentguide/week07/day43-47-customer-service-rag/) |
 
 ### Day 48–51 — 项目一：优化与部署 ✅
 
@@ -494,7 +494,7 @@
 | 本仓串联 | Compose 整栈 API+PG+Prom+Grafana；Locust QPS/P99；请求日志等价 Trace；README 四块 |
 | 验收 | 一键起栈 curl `/ask`；targets UP；压测有数字对照门槛；文档可复现 |
 | 文章 | [notes/week07/day48-51-customer-service-optimize.md](../notes/week07/day48-51-customer-service-optimize.md) |
-| 代码 | [week07/day48-51-customer-service-optimize](../week07/day48-51-customer-service-optimize/) |
+| 代码 | [tracks/agentguide/week07/day48-51-customer-service-optimize](../tracks/agentguide/week07/day48-51-customer-service-optimize/) |
 
 ### Day 52–56 — 项目二：自动化投研 Agent ✅
 
@@ -505,7 +505,7 @@
 | 本仓串联 | CrewAI 三人 sequential（搜集/财报分析/撰写）；≥5 工具 + fixture 等价；中间产出落盘；tenacity 重试/降级 |
 | 验收 | step01 五工具；step02 kickoff + intermediate/；step03 重试与降级；不荐股 |
 | 文章 | [notes/week07/day52-56-research-agent.md](../notes/week07/day52-56-research-agent.md) |
-| 代码 | [week07/day52-56-research-agent](../week07/day52-56-research-agent/) |
+| 代码 | [tracks/agentguide/week07/day52-56-research-agent](../tracks/agentguide/week07/day52-56-research-agent/) |
 
 ### Day 57–58 — 简历撰写与项目总结 ✅
 
@@ -516,7 +516,7 @@
 | 本仓串联 | 三段结构；客服 QPS/P99+Compose/监控；投研三人+工具+韧性；数字纪律与 XX 占位 |
 | 验收 | `resume_projects.md` 可粘贴；无未测虚数写死；能口述两项目差异 |
 | 文章 | [notes/week07/day57-58-resume.md](../notes/week07/day57-58-resume.md) |
-| 代码 | [week07/day57-58-resume](../week07/day57-58-resume/) |
+| 代码 | [tracks/agentguide/week07/day57-58-resume](../tracks/agentguide/week07/day57-58-resume/) |
 
 ### Day 59–60 — 系统设计与面试 Mock ✅
 
@@ -527,7 +527,7 @@
 | 本仓串联 | 四步骨架；客服/投研两案例；性能·故障·幻觉追问；Mock 复盘改澄清 |
 | 验收 | 能口述四步；两案例可讲；≥1 场 Mock + `mock_debrief.md` |
 | 文章 | [notes/week07/day59-60-interview-mock.md](../notes/week07/day59-60-interview-mock.md) |
-| 代码 | [week07/day59-60-interview-mock](../week07/day59-60-interview-mock/) |
+| 代码 | [tracks/agentguide/week07/day59-60-interview-mock](../tracks/agentguide/week07/day59-60-interview-mock/) |
 
 ---
 
@@ -537,9 +537,9 @@ Week 1–6 已发布（Day1–42 available）；Week 7–8 工业项目轨 **Day
 
 | 周 | 状态 | 强制主线 | 本仓注意 |
 |----|------|----------|----------|
-| 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [week05/README.md](../week05/README.md) |
-| 6 | `available` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–42：AgentChat + CrewAI + 对比；见 [week06/README.md](../week06/README.md) |
-| 7–8 | `available` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 Mock | Day43–60 已发布；见 [week07/README.md](../week07/README.md) |
+| 5 | `available` | 可观测 + Docker/Compose + JSON 日志 + 故障演练（Day29–35 ✅） | 见 [tracks/agentguide/week05/README.md](../tracks/agentguide/week05/README.md) |
+| 6 | `available` | AutoGen + CrewAI（或现役维护中的等价框架） | Day36–42：AgentChat + CrewAI + 对比；见 [tracks/agentguide/week06/README.md](../tracks/agentguide/week06/README.md) |
+| 7–8 | `available` | 智能客服 RAG + 投研 Multi-Agent；简历与系统设计 Mock | Day43–60 已发布；见 [tracks/agentguide/week07/README.md](../tracks/agentguide/week07/README.md) |
 
 ---
 

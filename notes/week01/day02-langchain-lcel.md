@@ -450,7 +450,7 @@ curl -sS http://127.0.0.1:8001/chain \
 问「什么是 LCEL」可能被理解成金融术语。加上「在 LangChain 里」更稳。
 
 **4）终端里重复 `cd` 子目录**  
-若已在项目目录，再 `cd week01/...` 会报错；直接 `uv run python demo_lcel.py` 即可。
+若已在项目目录，再 `cd tracks/agentguide/week01/...` 会报错；直接 `uv run python demo_lcel.py` 即可。
 
 ---
 

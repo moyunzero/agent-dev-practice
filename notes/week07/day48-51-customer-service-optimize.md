@@ -84,7 +84,7 @@
 目录要点：`Dockerfile` 打 API 镜像；`docker-compose.yml` 含四服务；`DATABASE_URL` 指向 `postgres:5432`。
 
 ```bash
-cd week07/day48-51-customer-service-optimize   # 或你的练习目录
+cd tracks/agentguide/week07/day48-51-customer-service-optimize   # 或你的练习目录
 docker compose up -d --build
 
 curl -s http://127.0.0.1:8048/ask -H 'Content-Type: application/json' \
