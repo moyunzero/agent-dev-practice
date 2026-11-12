@@ -1,6 +1,6 @@
 # Agent Dev Practice
 
-**两条可跟学习轨**：① AgentGuide 开发岗 Day1–60；② WorkBuddy 风格 Harness 深挖（s01–s04 可跑）。
+**两条可跟学习轨**：① AgentGuide 开发岗 Day1–60；② WorkBuddy 风格 Harness 深挖（s01–s05 可跑）。
 
 [AgentGuide](https://github.com/adongwanai/AgentGuide) / [learn-workbuddy](https://github.com/adongwanai/learn-workbuddy) 告诉你学什么；本仓库给你：**可验收的代码 + 零基础长文**。  
 阶段①带走两套简历级项目（智能客服 RAG + 投研 Multi-Agent）；阶段②看清桌面 Agent 的循环、分发、延迟加载与权限治理。
@@ -9,7 +9,7 @@
 [![uv](https://img.shields.io/badge/uv-ready-orange)](https://docs.astral.sh/uv/)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-black)](https://ollama.com/)
 [![Day 1–60](https://img.shields.io/badge/Day_1--60-available-brightgreen)](docs/ROADMAP.md)
-[![Harness s01–s04](https://img.shields.io/badge/Harness-s01--s04-available-brightgreen)](tracks/harness/)
+[![Harness s01–s05](https://img.shields.io/badge/Harness-s01--s05-available-brightgreen)](tracks/harness/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **目录小提示：** 第 7–8 周共用 [`tracks/agentguide/week07/`](tracks/agentguide/week07/README.md)（上游把工业项目与面试合成一块），不是少做一周。  
@@ -22,7 +22,7 @@
 | 轨 | 适合谁 | 公开代码 | 长文 | 状态 |
 |----|--------|----------|------|------|
 | **① AgentGuide** | 按 8 周把 API / RAG / Agent / 可观测 / 工业项目跑通 | [`tracks/agentguide/`](tracks/agentguide/) | [`notes/weekXX/`](notes/) | `available` |
-| **② Harness** | 通关后深挖桌面 Agent 工程（loop → 权限） | [`tracks/harness/`](tracks/harness/) | [`notes/learn-workbuddy/`](notes/learn-workbuddy/) | `in_progress`（s01–s04 `available`） |
+| **② Harness** | 通关后深挖桌面 Agent 工程（loop → 权限 → 进程壳） | [`tracks/harness/`](tracks/harness/) | [`notes/learn-workbuddy/`](notes/learn-workbuddy/) | `in_progress`（s01–s05 `available`） |
 
 ```bash
 # 阶段①：最小 API
@@ -42,7 +42,7 @@ cd tracks/harness && pip install -r requirements.txt && python3 s01_agent_loop/c
 | 教程只讲概念，没有验收 | README：**文件说明 → 推荐顺序 → 验收命令** |
 | 工业项目缺可写进简历的证据 | 客服有 Locust QPS/P99 + Compose 监控；投研有三人 Crew + 中间产出 |
 | 面试不会讲系统设计 | Day59–60：四步骨架 + 追问卡 + Mock 复盘 |
-| 会调 API Agent，不懂桌面 Harness | 轨②：loop → 分发 → 延迟加载 → 权限/Hooks（`--demo` 可离线） |
+| 会调 API Agent，不懂桌面 Harness | 轨②：loop → 分发 → 延迟加载 → 权限 → 三进程壳（`--demo` 可离线） |
 
 **和上游的分工**
 
@@ -106,12 +106,14 @@ curl -s -X POST http://127.0.0.1:8002/ask \
 |:-:|------|----------|------|
 | A | **Agent Loop** | 离线 `--demo` 讲清循环位置 | [s01](tracks/harness/s01_agent_loop/) |
 | B | **Permission & Hooks** | 决策 → 审批 → 执行三岗 | [s04](tracks/harness/s04_permission_hooks/) |
+| C | **Electron Shell** | Main / Renderer / Preload + IPC | [s05](tracks/harness/s05_electron_shell/) |
 
 ```bash
 cd tracks/harness
 pip install -r requirements.txt
 python3 s01_agent_loop/code.py --demo
 python3 s04_permission_hooks/code.py --demo
+python3 s05_electron_shell/code.py --demo
 ```
 
 长文索引：[notes/learn-workbuddy](notes/learn-workbuddy/) · 轨说明：[tracks/harness](tracks/harness/)
@@ -198,7 +200,7 @@ flowchart LR
 agent-dev-practice/
 ├── tracks/
 │   ├── agentguide/        # 轨①：week01/ … week07/
-│   └── harness/           # 轨②：s01–s04 可跑切片
+│   └── harness/           # 轨②：s01–s05 可跑切片
 ├── notes/
 │   ├── weekXX/            # 轨① 长文
 │   └── learn-workbuddy/   # 轨② 长文
@@ -268,7 +270,8 @@ agent-dev-practice/
 | s02 | Tool Dispatch | [s02](tracks/harness/s02_tool_dispatch/) | [📖](notes/learn-workbuddy/s02-tool-dispatch.md) |
 | s03 | Deferred Loading | [s03](tracks/harness/s03_deferred_loading/) | [📖](notes/learn-workbuddy/s03-deferred-loading.md) |
 | s04 | Permission & Hooks | [s04](tracks/harness/s04_permission_hooks/) | [📖](notes/learn-workbuddy/s04-permission-hooks.md) |
-| s05–s24 | 桌面运行时 → 综合 | `planned` | — |
+| s05 | Electron Shell | [s05](tracks/harness/s05_electron_shell/) | [📖](notes/learn-workbuddy/s05-electron-shell.md) |
+| s06–s24 | Sidecar → 综合 | `planned` | — |
 
 完整说明：[tracks/harness/README.md](tracks/harness/README.md)
 
@@ -309,7 +312,7 @@ Day4+ 会装 torch。关其它占内存程序，或只进单个 day 目录 sync�
 <details>
 <summary><strong>8 周主线 / Harness 更新到哪了？</strong></summary>
 
-轨①：**Day 1–60 全部 `available`。** 轨②：s01–s04 `available`，后续章节按进度发布。
+轨①：**Day 1–60 全部 `available`。** 轨②：s01–s05 `available`，后续章节按进度发布。
 </details>
 
 ---
