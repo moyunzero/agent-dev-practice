@@ -1,6 +1,6 @@
 # Harness 轨（阶段②）— WorkBuddy 风格桌面 Agent 工程课
 
-> **状态**：`in_progress`（s01–s05 `available`；后续章节按学会进度发布）  
+> **状态**：`in_progress`（s01–s06 `available`；后续章节按学会进度发布）  
 > **轨登记**：[docs/TRACKS.md](../../docs/TRACKS.md) · **上游蓝图**：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)
 
 模型是大脑，Harness 是操作系统。本目录是本仓**可跑切片**：每章一个 `code.py`，默认离线 `--demo`。
@@ -26,7 +26,8 @@ python3 s01_agent_loop/code.py --demo
 | s03 | Deferred Loading | `available` | [s03_deferred_loading](./s03_deferred_loading/) | [notes](../../notes/learn-workbuddy/s03-deferred-loading.md) |
 | s04 | Permission & Hooks | `available` | [s04_permission_hooks](./s04_permission_hooks/) | [notes](../../notes/learn-workbuddy/s04-permission-hooks.md) |
 | s05 | Electron Shell | `available` | [s05_electron_shell](./s05_electron_shell/) | [notes](../../notes/learn-workbuddy/s05-electron-shell.md) |
-| s06–s24 | Sidecar → 综合 | `planned` | — | — |
+| s06 | Sidecar Server | `available` | [s06_sidecar_server](./s06_sidecar_server/) | [notes](../../notes/learn-workbuddy/s06-sidecar-server.md) |
+| s07–s24 | Session → 综合 | `planned` | — | — |
 
 ## 目录说明
 

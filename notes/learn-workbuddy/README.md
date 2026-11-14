@@ -9,6 +9,7 @@
 | s03 | Deferred Loading | `available` | [s03-deferred-loading.md](./s03-deferred-loading.md) | [tracks](../../tracks/harness/s03_deferred_loading/) |
 | s04 | Permission & Hooks | `available` | [s04-permission-hooks.md](./s04-permission-hooks.md) | [tracks](../../tracks/harness/s04_permission_hooks/) |
 | s05 | Electron Shell | `available` | [s05-electron-shell.md](./s05-electron-shell.md) | [tracks](../../tracks/harness/s05_electron_shell/) |
-| s06+ | 后续章节 | `planned` | — | — |
+| s06 | Sidecar Server | `available` | [s06-sidecar-server.md](./s06-sidecar-server.md) | [tracks](../../tracks/harness/s06_sidecar_server/) |
+| s07+ | 后续章节 | `planned` | — | — |
 
 上游完整课程：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)。
