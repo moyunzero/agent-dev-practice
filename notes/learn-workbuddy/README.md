@@ -10,6 +10,7 @@
 | s04 | Permission & Hooks | `available` | [s04-permission-hooks.md](./s04-permission-hooks.md) | [tracks](../../tracks/harness/s04_permission_hooks/) |
 | s05 | Electron Shell | `available` | [s05-electron-shell.md](./s05-electron-shell.md) | [tracks](../../tracks/harness/s05_electron_shell/) |
 | s06 | Sidecar Server | `available` | [s06-sidecar-server.md](./s06-sidecar-server.md) | [tracks](../../tracks/harness/s06_sidecar_server/) |
-| s07+ | 后续章节 | `planned` | — | — |
+| s07 | Session Management | `available` | [s07-session-management.md](./s07-session-management.md) | [tracks](../../tracks/harness/s07_session_management/) |
+| s08+ | 后续章节 | `planned` | — | — |
 
 上游完整课程：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)。
