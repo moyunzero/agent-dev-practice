@@ -11,6 +11,7 @@
 | s05 | Electron Shell | `available` | [s05-electron-shell.md](./s05-electron-shell.md) | [tracks](../../tracks/harness/s05_electron_shell/) |
 | s06 | Sidecar Server | `available` | [s06-sidecar-server.md](./s06-sidecar-server.md) | [tracks](../../tracks/harness/s06_sidecar_server/) |
 | s07 | Session Management | `available` | [s07-session-management.md](./s07-session-management.md) | [tracks](../../tracks/harness/s07_session_management/) |
-| s08+ | 后续章节 | `planned` | — | — |
+| s08 | Model Routing | `available` | [s08-model-routing.md](./s08-model-routing.md) | [tracks](../../tracks/harness/s08_model_routing/) |
+| s09+ | 后续章节 | `planned` | — | — |
 
 上游完整课程：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)。
