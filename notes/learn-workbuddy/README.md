@@ -13,6 +13,7 @@
 | s07 | Session Management | `available` | [s07-session-management.md](./s07-session-management.md) | [tracks](../../tracks/harness/s07_session_management/) |
 | s08 | Model Routing | `available` | [s08-model-routing.md](./s08-model-routing.md) | [tracks](../../tracks/harness/s08_model_routing/) |
 | s09 | JSONL Transcript | `available` | [s09-jsonl-transcript.md](./s09-jsonl-transcript.md) | [tracks](../../tracks/harness/s09_jsonl_transcript/) |
-| s10+ | 后续章节 | `planned` | — | — |
+| s10 | Workspace Memory | `available` | [s10-workspace-memory.md](./s10-workspace-memory.md) | [tracks](../../tracks/harness/s10_workspace_memory/) |
+| s11+ | 后续章节 | `planned` | — | — |
 
 上游完整课程：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)。

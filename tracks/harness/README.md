@@ -1,6 +1,6 @@
 # Harness 轨（阶段②）— WorkBuddy 风格桌面 Agent 工程课
 
-> **状态**：`in_progress`（s01–s09 `available`；后续章节按学会进度发布）  
+> **状态**：`in_progress`（s01–s10 `available`；后续章节按学会进度发布）  
 > **轨登记**：[docs/TRACKS.md](../../docs/TRACKS.md) · **上游蓝图**：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)
 
 模型是大脑，Harness 是操作系统。本目录是本仓**可跑切片**：每章一个 `code.py`，默认离线 `--demo`。
@@ -30,7 +30,8 @@ python3 s01_agent_loop/code.py --demo
 | s07 | Session Management | `available` | [s07_session_management](./s07_session_management/) | [notes](../../notes/learn-workbuddy/s07-session-management.md) |
 | s08 | Model Routing | `available` | [s08_model_routing](./s08_model_routing/) | [notes](../../notes/learn-workbuddy/s08-model-routing.md) |
 | s09 | JSONL Transcript | `available` | [s09_jsonl_transcript](./s09_jsonl_transcript/) | [notes](../../notes/learn-workbuddy/s09-jsonl-transcript.md) |
-| s10–s24 | Memory → 综合 | `planned` | — | — |
+| s10 | Workspace Memory | `available` | [s10_workspace_memory](./s10_workspace_memory/) | [notes](../../notes/learn-workbuddy/s10-workspace-memory.md) |
+| s11–s24 | User Memory → 综合 | `planned` | — | — |
 
 ## 目录说明
 
