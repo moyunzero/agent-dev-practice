@@ -14,6 +14,7 @@
 | s08 | Model Routing | `available` | [s08-model-routing.md](./s08-model-routing.md) | [tracks](../../tracks/harness/s08_model_routing/) |
 | s09 | JSONL Transcript | `available` | [s09-jsonl-transcript.md](./s09-jsonl-transcript.md) | [tracks](../../tracks/harness/s09_jsonl_transcript/) |
 | s10 | Workspace Memory | `available` | [s10-workspace-memory.md](./s10-workspace-memory.md) | [tracks](../../tracks/harness/s10_workspace_memory/) |
-| s11+ | 后续章节 | `planned` | — | — |
+| s11 | User Memory | `available` | [s11-user-memory.md](./s11-user-memory.md) | [tracks](../../tracks/harness/s11_user_memory/) |
+| s12+ | 后续章节 | `planned` | — | — |
 
 上游完整课程：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)。
