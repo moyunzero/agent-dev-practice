@@ -1,6 +1,6 @@
 # Harness 轨（阶段②）— WorkBuddy 风格桌面 Agent 工程课
 
-> **状态**：`in_progress`（s01–s14 `available`；后续章节按学会进度发布）  
+> **状态**：`in_progress`（s01–s15 `available`；后续章节按学会进度发布）  
 > **轨登记**：[docs/TRACKS.md](../../docs/TRACKS.md) · **上游蓝图**：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)
 
 模型是大脑，Harness 是操作系统。本目录是本仓**可跑切片**：每章一个 `code.py`，默认离线 `--demo`。
@@ -35,7 +35,8 @@ python3 s01_agent_loop/code.py --demo
 | s12 | Remote Memory | `available` | [s12_cloud_memory](./s12_cloud_memory/) | [notes](../../notes/learn-workbuddy/s12-remote-memory.md) |
 | s13 | Output Externalization | `available` | [s13_output_externalization](./s13_output_externalization/) | [notes](../../notes/learn-workbuddy/s13-output-externalization.md) |
 | s14 | Context Compact | `available` | [s14_context_compact](./s14_context_compact/) | [notes](../../notes/learn-workbuddy/s14-context-compact.md) |
-| s15–s24 | Prompt Assembly → 综合 | `planned` | — | — |
+| s15 | Prompt Assembly | `available` | [s15_prompt_assembly](./s15_prompt_assembly/) | [notes](../../notes/learn-workbuddy/s15-prompt-assembly.md) |
+| s16–s24 | Skills → 综合 | `planned` | — | — |
 
 ## 目录说明
 

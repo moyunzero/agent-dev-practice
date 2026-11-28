@@ -18,6 +18,7 @@
 | s12 | Remote Memory | `available` | [s12-remote-memory.md](./s12-remote-memory.md) | [tracks](../../tracks/harness/s12_cloud_memory/) |
 | s13 | Output Externalization | `available` | [s13-output-externalization.md](./s13-output-externalization.md) | [tracks](../../tracks/harness/s13_output_externalization/) |
 | s14 | Context Compact | `available` | [s14-context-compact.md](./s14-context-compact.md) | [tracks](../../tracks/harness/s14_context_compact/) |
-| s15+ | 后续章节 | `planned` | — | — |
+| s15 | Prompt Assembly | `available` | [s15-prompt-assembly.md](./s15-prompt-assembly.md) | [tracks](../../tracks/harness/s15_prompt_assembly/) |
+| s16+ | 后续章节 | `planned` | — | — |
 
 上游完整课程：[learn-workbuddy](https://github.com/adongwanai/learn-workbuddy)。

@@ -1,6 +1,6 @@
 # Agent Dev Practice
 
-**两条可跟学习轨**：① AgentGuide 开发岗 Day1–60；② WorkBuddy 风格 Harness 深挖（s01–s14 可跑）。
+**两条可跟学习轨**：① AgentGuide 开发岗 Day1–60；② WorkBuddy 风格 Harness 深挖（s01–s15 可跑）。
 
 [AgentGuide](https://github.com/adongwanai/AgentGuide) / [learn-workbuddy](https://github.com/adongwanai/learn-workbuddy) 告诉你学什么；本仓库给你：**可验收的代码 + 零基础长文**。  
 阶段①带走两套简历级项目（智能客服 RAG + 投研 Multi-Agent）；阶段②看清桌面 Agent 的循环、分发、延迟加载与权限治理。
@@ -9,7 +9,7 @@
 [![uv](https://img.shields.io/badge/uv-ready-orange)](https://docs.astral.sh/uv/)
 [![Ollama](https://img.shields.io/badge/LLM-Ollama-black)](https://ollama.com/)
 [![Day 1–60](https://img.shields.io/badge/Day_1--60-available-brightgreen)](docs/ROADMAP.md)
-[![Harness s01–s14](https://img.shields.io/badge/Harness-s01--s14-available-brightgreen)](tracks/harness/)
+[![Harness s01–s15](https://img.shields.io/badge/Harness-s01--s15-available-brightgreen)](tracks/harness/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **目录小提示：** 第 7–8 周共用 [`tracks/agentguide/week07/`](tracks/agentguide/week07/README.md)（上游把工业项目与面试合成一块），不是少做一周。  
@@ -22,7 +22,7 @@
 | 轨 | 适合谁 | 公开代码 | 长文 | 状态 |
 |----|--------|----------|------|------|
 | **① AgentGuide** | 按 8 周把 API / RAG / Agent / 可观测 / 工业项目跑通 | [`tracks/agentguide/`](tracks/agentguide/) | [`notes/weekXX/`](notes/) | `available` |
-| **② Harness** | 通关后深挖桌面 Agent 工程（loop → 权限 → 壳 → Sidecar → Session → 路由 → JSONL → Memory → 大输出外置 → 上下文压缩） | [`tracks/harness/`](tracks/harness/) | [`notes/learn-workbuddy/`](notes/learn-workbuddy/) | `in_progress`（s01–s14 `available`） |
+| **② Harness** | 通关后深挖桌面 Agent 工程（loop → 权限 → 壳 → Sidecar → Session → 路由 → JSONL → Memory → 大输出外置 → 上下文压缩 → Prompt 组装） | [`tracks/harness/`](tracks/harness/) | [`notes/learn-workbuddy/`](notes/learn-workbuddy/) | `in_progress`（s01–s15 `available`） |
 
 ```bash
 # 阶段①：最小 API
@@ -116,6 +116,7 @@ curl -s -X POST http://127.0.0.1:8002/ask \
 | J | **Remote Memory** | Stored vs Recall；五阶段召回；撤回两视图 | [s12](tracks/harness/s12_cloud_memory/) |
 | K | **Output Externalization** | 大输出落盘；指针进 Prompt；缺页按需读 | [s13](tracks/harness/s13_output_externalization/) |
 | L | **Context Compact** | 四层压缩；Durable 旁路；pointer 五态 | [s14](tracks/harness/s14_context_compact/) |
+| M | **Prompt Assembly** | 选择→装箱→组装；双日志；authority | [s15](tracks/harness/s15_prompt_assembly/) |
 
 ```bash
 cd tracks/harness
@@ -132,6 +133,7 @@ python3 s11_user_memory/code.py --demo
 python3 s12_cloud_memory/code.py --demo
 python3 s13_output_externalization/code.py --demo
 python3 s14_context_compact/code.py --demo
+python3 s15_prompt_assembly/code.py --demo
 ```
 
 长文索引：[notes/learn-workbuddy](notes/learn-workbuddy/) · 轨说明：[tracks/harness](tracks/harness/)
@@ -218,7 +220,7 @@ flowchart LR
 agent-dev-practice/
 ├── tracks/
 │   ├── agentguide/        # 轨①：week01/ … week07/
-│   └── harness/           # 轨②：s01–s14 可跑切片
+│   └── harness/           # 轨②：s01–s15 可跑切片
 ├── notes/
 │   ├── weekXX/            # 轨① 长文
 │   └── learn-workbuddy/   # 轨② 长文
@@ -298,7 +300,8 @@ agent-dev-practice/
 | s12 | Remote Memory | [s12](tracks/harness/s12_cloud_memory/) | [📖](notes/learn-workbuddy/s12-remote-memory.md) |
 | s13 | Output Externalization | [s13](tracks/harness/s13_output_externalization/) | [📖](notes/learn-workbuddy/s13-output-externalization.md) |
 | s14 | Context Compact | [s14](tracks/harness/s14_context_compact/) | [📖](notes/learn-workbuddy/s14-context-compact.md) |
-| s15–s24 | Prompt Assembly → 综合 | `planned` | — |
+| s15 | Prompt Assembly | [s15](tracks/harness/s15_prompt_assembly/) | [📖](notes/learn-workbuddy/s15-prompt-assembly.md) |
+| s16–s24 | Skills → 综合 | `planned` | — |
 
 完整说明：[tracks/harness/README.md](tracks/harness/README.md)
 
@@ -339,7 +342,7 @@ Day4+ 会装 torch。关其它占内存程序，或只进单个 day 目录 sync�
 <details>
 <summary><strong>8 周主线 / Harness 更新到哪了？</strong></summary>
 
-轨①：**Day 1–60 全部 `available`。** 轨②：s01–s14 `available`，后续章节按进度发布。
+轨①：**Day 1–60 全部 `available`。** 轨②：s01–s15 `available`，后续章节按进度发布。
 </details>
 
 ---
